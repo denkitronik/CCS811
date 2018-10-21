@@ -1,0 +1,342 @@
+.TH "libccs811.c" 3 "Sat Oct 20 2018" "Version 1.0.0" "libccs811" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+libccs811.c
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <wiringPi\&.h>\fP
+.br
+\fC#include <errno\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <linux/i2c\-dev\&.h>\fP
+.br
+\fC#include <sys/ioctl\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <sys/stat\&.h>\fP
+.br
+\fC#include <fcntl\&.h>\fP
+.br
+\fC#include 'libccs811\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "char * \fBgetSelectedRegister\fP (char registerSelected)"
+.br
+.ti -1c
+.RI "void \fBselectRegister\fP (const char reg)"
+.br
+.ti -1c
+.RI "void \fBreadI2C\fP (const int numBytes)"
+.br
+.ti -1c
+.RI "void \fBwriteI2CBytes\fP (const char reg, int numBytes)"
+.br
+.ti -1c
+.RI "const char \fBgetRegister\fP (const char reg, const int numBytes)"
+.br
+.ti -1c
+.RI "union \fBApplicationRegister\fP \fBgetAppRegister\fP ()"
+.br
+.ti -1c
+.RI "void \fBresetCCS811\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetResetPin\fP (char pin)"
+.br
+.ti -1c
+.RI "void \fBsetInterruptPin\fP (char pin)"
+.br
+.ti -1c
+.RI "void \fBsetAddressPin\fP (char pin)"
+.br
+.ti -1c
+.RI "void \fBsetEnvironmentData\fP (float temperature, float humidity)"
+.br
+.ti -1c
+.RI "void \fBprintAppReg\fP ()"
+.br
+.ti -1c
+.RI "void \fBprintStatus\fP ()"
+.br
+.ti -1c
+.RI "uint8_t \fBavailable\fP ()"
+.br
+.ti -1c
+.RI "void \fBclearAppReg\fP ()"
+.br
+.ti -1c
+.RI "void \fBprintErrors\fP (char *message)"
+.br
+.ti -1c
+.RI "void \fBreadRegister\fP (const char reg, int numBytes)"
+.br
+.ti -1c
+.RI "void \fBprintHealthECO2\fP (uint16_t eco2)"
+.br
+.ti -1c
+.RI "void \fBprintHealthVOC\fP (uint16_t tvoc)"
+.br
+.ti -1c
+.RI "void \fBwriteRegister\fP (const char reg, const int numBytes)"
+.br
+.ti -1c
+.RI "void \fBconnectCCS811\fP (const char address)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "char \fBaddressPin\fP =\fBCCS811_ADDR_HIGH\fP"
+.br
+.RI "Address pin in the Raspberry PI (use wiringpi pinout) "
+.ti -1c
+.RI "char \fBresetPin\fP = 3"
+.br
+.RI "Reset pin in the Raspberry PI (use wiringpi pinout) "
+.ti -1c
+.RI "char \fBinterruptPin\fP = 2"
+.br
+.RI "Interrupt pin in the Raspberry PI (use wiringpi pinout) "
+.ti -1c
+.RI "int \fBfile\fP"
+.br
+.RI "File descriptor, a nonnegative integer can be used in subsequent system calls (read(), write(), lseek(), fcntl(), etc\&.) "
+.ti -1c
+.RI "union \fBApplicationRegister\fP \fBappReg\fP"
+.br
+.RI "Application register\&. "
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "uint8_t available ()"
+Check if there is a data available 
+.PP
+\fBReturns:\fP
+.RS 4
+State of the interrupt pin settled with \fBsetInterruptPin()\fP function 
+.RE
+.PP
+
+.SS "void clearAppReg ()"
+Clear the current Application Registers 
+.SS "void connectCCS811 (const char address)"
+Connect to the CCS811 plugged in the I2C bus with the specified address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddress\fP Address of the CCS811\&.
+.br
+ Only two valid address: CCS811_ADDR_HIGH and CCS811_ADDR_LOW 
+.RE
+.PP
+
+.SS "union \fBApplicationRegister\fP getAppRegister ()"
+Get the current application register of the CCS811\&. 
+.br
+ It is no valid until \fBreadRegister()\fP be called\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The current application register 
+.RE
+.PP
+
+.SS "const char getRegister (const char reg, const int numBytes)"
+Returns the register specified in the 'CCS811 constants' because they contain reg and numBytes concatenated: STATUS MEAS_MODE ALG_RESULT_DATA RAW_DATA ENV_DATA NTC THRESHOLDS BASELINE HW_ID HW_VERSION FW_BOOT_VERSION FW_APP_VERSION INTERNAL_STATE ERROR_ID APP_ERASE APP_DATA APP_VERIFY APP_START SW_RESET 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreg\fP The register specified 
+.br
+\fInumBytes\fP The number of bytes of the register specified in reg to be read 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The register selected 
+.RE
+.PP
+
+.SS "char * getSelectedRegister (char registerSelected)"
+Get a string with the name of the selected register 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIregisterSelected\fP Selected register 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+String with the name of the selected register 
+.RE
+.PP
+
+.SS "void printAppReg ()"
+Prints the current Application Register 
+.SS "void printErrors (char * message)"
+Prints to stdout the state of errors 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP Title of the printing in the stdout 
+.RE
+.PP
+
+.SS "void printHealthECO2 (uint16_t eco2)"
+Prints information about the impact of the eCO2 in the human health\&.
+.br
+ Messages taken from: https://www.kane.co.uk/knowledge-centre/what-are-safe-levels-of-co-and-co2-in-rooms 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIeco2\fP Level of the eCO2 in ppm 
+.RE
+.PP
+
+.SS "void printHealthVOC (uint16_t tvoc)"
+Prints information about the impact of the eTVOC in the human health\&. Taken of TVOC guidelines issued by the German Federal Environmental Agency 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItvoc\fP Level of the eTVOC in ppm 
+.RE
+.PP
+
+.SS "void printStatus ()"
+Prints the status register 
+.SS "void readI2C (const int numBytes)"
+Read a number of bytes of the selected register 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInumBytes\fP Number of bytes to be read 
+.RE
+.PP
+
+.SS "void readRegister (const char reg, int numBytes)"
+Read a number of bytes of the register specified\&. Use it in this way (example): readRegister(STATUS) 
+.br
+ Valid values are (these constants contains reg and numBytes): STATUS MEAS_MODE ALG_RESULT_DATA RAW_DATA ENV_DATA NTC THRESHOLDS BASELINE HW_ID HW_VERSION FW_BOOT_VERSION FW_APP_VERSION INTERNAL_STATE ERROR_ID APP_ERASE APP_DATA APP_VERIFY APP_START SW_RESET 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreg\fP Register to be read\&. 
+.br
+\fInumBytes\fP Number of bytes to be read from the register\&. 
+.RE
+.PP
+
+.SS "void resetCCS811 ()"
+Resets the CCS811 using the specified pin in \fBsetResetPin()\fP function 
+.SS "void selectRegister (const char reg)"
+Selects a register to be read 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreg\fP Register to be read 
+.RE
+.PP
+
+.SS "void setAddressPin (char pin)"
+Set the Address pin in the Raspberry PI (use wiringpi pinout)\&. 
+.br
+ It has no effect until \fBconnectCCS811()\fP is called 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpin\fP WiringPi pin number where the address pin is connected 
+.RE
+.PP
+
+.SS "void setEnvironmentData (float temperature, float humidity)"
+Specify enviroment data to adjust the measurement of eCO2 and eTVOC levels 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItemperature\fP Environment's temperature in degree celsius 
+.br
+\fIhumidity\fP Environment's humidity in % Relative Humidity 
+.RE
+.PP
+
+.SS "void setInterruptPin (char pin)"
+Set the Interrupt pin in the Raspberry PI (use wiringpi pinout) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpin\fP WiringPi pin number where the interrupt pin is connected 
+.RE
+.PP
+
+.SS "void setResetPin (char pin)"
+Set the Reset pin in the Raspberry PI (use wiringpi pinout) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpin\fP number wiringpi style where the reset pin is connected 
+.RE
+.PP
+
+.SS "void writeI2CBytes (const char reg, int numBytes)"
+Write a number of bytes of the the prepared appReg\&.buffer in the specified register 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreg\fP Register to be written 
+.br
+\fInumBytes\fP Number of bytes of appReg\&.buffer to be written 
+.RE
+.PP
+
+.SS "void writeRegister (const char reg, const int numBytes)"
+Write appReg in the specified register 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreg\fP Register to be written 
+.br
+\fInumBytes\fP Number of bytes to be written 
+.RE
+.PP
+
+.SH "Variable Documentation"
+.PP 
+.SS "char addressPin =\fBCCS811_ADDR_HIGH\fP"
+
+.PP
+Address pin in the Raspberry PI (use wiringpi pinout) 
+.SS "union \fBApplicationRegister\fP appReg"
+
+.PP
+Application register\&. 
+.SS "int file"
+
+.PP
+File descriptor, a nonnegative integer can be used in subsequent system calls (read(), write(), lseek(), fcntl(), etc\&.) 
+.SS "char interruptPin = 2"
+
+.PP
+Interrupt pin in the Raspberry PI (use wiringpi pinout) 
+.SS "char resetPin = 3"
+
+.PP
+Reset pin in the Raspberry PI (use wiringpi pinout) 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libccs811 from the source code\&.

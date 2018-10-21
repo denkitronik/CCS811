@@ -1,0 +1,64 @@
+.TH "md__r_e_a_d_m_e" 3 "Sat Oct 20 2018" "Version 1.0.0" "libccs811" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__r_e_a_d_m_e \- Linux Raspbian (Raspberry PI) Shared Library for AMS AG CCS811 - Ultra-Low Power Digital Gas Sensor for Monitoring Indoor Air Quality 
+This is an easy to use shared library for CO2 and TVOC sensor CCS811
+.PP
+.SS "Getting Started"
+.PP
+.SS "Prerequisites"
+.PP
+WiringPi library installed
+.PP
+.SS "Installing"
+.PP
+Download this library as zip file, then click in 'Sketch' -> 'Include Library' ->'Add \&.ZIP Library' and select the zip file downloaded\&.
+.PP
+.SS "Running the tests"
+.PP
+.IP "1." 4
+Connect the ADS1118 in the 3\&.3v power supply pins of your Arduino\&.
+.IP "2." 4
+Connect the ADS1118 CS pin to the pin 5 of your Arduino\&.
+.IP "3." 4
+Connect the ADS1118 MISO (DOUT), MOSI(DIN) and SCLK pins to the MISO, MOSI and SCLK of your Arduino (search on internet 'Arduino ICSP pinout')\&.
+.PP
+.PP
+ARDUINO (IC   MOSI  DIN   MISO  DOUT   SCLK  SCLK   5 (change this pin to fit your needs)  CS   
+.PP
+.IP "4." 4
+Run the examples provided in your Arduino IDE\&. Go to 'File' -> 'Examples' -> 'ADS1118 library' -> 'basicExampleAds1118' or 'ads1118example'
+.PP
+.PP
+.SS "Example with a thermocouple"
+.PP
+This is the typical circuit for a 'thermocouple measurement system' as shown in the TI \fCADS1118 datasheet page 32\fP\&. 
+.PP
+.SS "Built With"
+.PP
+.IP "\(bu" 2
+\fCArduino IDE\fP
+.PP
+.PP
+.SS "Contributing"
+.PP
+Everyone is invited to contribute When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with me before making a change\&.
+.PP
+.SS "Release History"
+.PP
+1\&.0\&.0 CHANGE: Initial commit
+.PP
+.SS "Versioning"
+.PP
+I am using \fCSemVer\fP for versioning\&.
+.PP
+.SS "Authors"
+.PP
+.IP "\(bu" 2
+\fBAlvaro Salazar\fP - \fIInitial work\fP - \fCalvaro-salazar\fP
+.PP
+.PP
+.SS "License"
+.PP
+This project is licensed under the MIT License - see the \fBLICENSE\fP file for details\&. 

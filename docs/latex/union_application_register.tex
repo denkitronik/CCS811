@@ -1,0 +1,693 @@
+\hypertarget{union_application_register}{}\section{Application\+Register}
+\label{union_application_register}\index{Application\+Register@{Application\+Register}}
+
+
+Data Result Register.  
+
+
+
+
+{\ttfamily \#include $<$libccs811.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_adc64ccb7538429fe78e3fe0139267370}{error}}: 1\\
+\>\>{\em 0: No error.~\newline
+ 1: There is an error on the I²C or sensor, the ERROR\_ID register (0xE0) contains the error source }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a2a2556147677ece60b8aadf4a0d608ed}{reserved1}}: 2\\
+\>\>{\em Not used bits. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a7b89ba3779ca235c32a469e89de8da46}{data\_ready}}: 1\\
+\>\>{\em 0: No new data samples are ready.~\newline
+ 1: A new data sample is ready in ALG\_RESULT\_DATA, this bit is cleared when ALG\_RESULT\_DATA is read }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_ad622f34a9f1cc0e8cf002492f2fe8e8a}{app\_valid}}: 1\\
+\>\>{\em 0: No application firmware loaded.~\newline
+ 1: Valid application firmware loaded. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_adce608653e619b089b54d75eed8bf6ed}{app\_verify}}: 1\\
+\>\>{\em (Boot mode only)~\newline
+ 0: 0: No verify completed.~\newline
+ 1: Application verify operation completed.~\newline
+ After issuing a VERIFY command the application software must wait 70ms before issuing any transactions to CCS811 over the I²C interface. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a24297bc3eb56e16f4d862a69eb773786}{app\_erase}}: 1\\
+\>\>{\em (Boot mode only)~\newline
+ 0: No erase completed.~\newline
+ 1: Application erase operation completed. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_aacc84f0d7fba3fd77eff42c1963ece89}{fwmode}}: 1\\
+\>\>{\em 0: Firmware is in boot mode, this allows new firmware to be loaded.~\newline
+ 1: Firmware is in application mode. }\\
+\} \mbox{\hyperlink{union_application_register_a99b0728eb13db9f7e1b6c51cb062ecac}{status}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Structure of the status register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a2a2556147677ece60b8aadf4a0d608ed}{reserved1}}: 2\\
+\>\>{\em Not used bits. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a0632faf7c6c7fe7dde6437fadea96dfd}{int\_thresh}}: 1\\
+\>\>{\em 0: Normal interrupt mode (if enabled).~\newline
+ 1: Interrupt mode (if enabled) only asserts the nINT signal (driven low) if the new ALG\_RESULT\_DATA crosses one of the thresholds set in the THRESHOLDS register by more than the hysteresis value }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a16598183bfc37e17f0b615a726e9e806}{int\_data\_ready}}: 1\\
+\>\>{\em 0: Interrupt generation is disabled.~\newline
+ 1: The nINT signal is asserted (driven low) when a new sample is ready in ALG\_RESULT\_DATA }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a60b8fb17f5de49bf24544c4ffc59d099}{driveMode}}: 3\\
+\>\>{\em Sets the measurement mode. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a646df3514a24749a0f54731bf41c6c67}{reserved2}}: 1\\
+\>\>{\em Not used bit. }\\
+\} \mbox{\hyperlink{union_application_register_ab78fc84f99f28c290625db387ae27fd2}{meas\_mode}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Structure of the measurement mode register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint16\_t \mbox{\hyperlink{union_application_register_a6ae8195dcd841d5d5a27361dbe594a5d}{eco2}}: 16\\
+\>\>{\em eCO2 ppm }\\
+\>uint16\_t \mbox{\hyperlink{union_application_register_a26fd892e05117ff980a779acfac83982}{tvoc}}: 16\\
+\>\>{\em TVOC ppb. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_ade818037fd6c985038ff29656089758d}{status}}: 8\\
+\>\>{\em Status register. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_ae43c81687ca2bd1e128a57d78959ae15}{error\_id}}: 8\\
+\>\>{\em Error\_id register. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a7a36a66e5a41b8a2b261f9fa8c23deb4}{raw\_data\_current}}: 6\\
+\>\>{\em The value of the current through the sensor (0μA to 63μA) }\\
+\>uint16\_t \mbox{\hyperlink{union_application_register_af2995a35bf1791d033118b3e44cdcc44}{raw\_data\_adc}}: 10\\
+\>\>{\em 10bit ADC voltage across the sensor with the selected current (1023 = 1.65V) }\\
+\} \mbox{\hyperlink{union_application_register_a7f04a5353de79353be8ea73375a88cdd}{alg\_result\_data}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Structure of the algorythm result data register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint16\_t \mbox{\hyperlink{union_application_register_a369e24a68ff6c1f92b752677988145d9}{temperature\_fraction}}: 9\\
+\>\>{\em Temperature fraction in 1/512 degree celsius. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_ad8c21d94b1e5295e681983b7dd453eb8}{temperature}}: 7\\
+\>\>{\em Temperature integer part in degree celsius. }\\
+\>uint16\_t \mbox{\hyperlink{union_application_register_aef743be1f1c7224b4a275e825e4c4693}{humidity\_fraction}}: 9\\
+\>\>{\em Humidity fraction in 1/512RH. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a3cb62182097ceb535c2f31919c98a0b6}{humidity}}: 7\\
+\>\>{\em Humidity integer part in RH. }\\
+\} \mbox{\hyperlink{union_application_register_a521ae6a473252f47fc132cb0b54a8ae0}{env\_data}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Structure of the environment data register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint16\_t \mbox{\hyperlink{union_application_register_a3b5ca9a6349d352395207fa5d3ce857c}{v\_Rntc}}: 16\\
+\>\>{\em Voltage across R\_NTC (mV) }\\
+\>uint16\_t \mbox{\hyperlink{union_application_register_ad05dd83b4bd4782a07617cae54d23b21}{v\_Rref}}: 16\\
+\>\>{\em Voltage across R\_REF (mV) }\\
+\} \mbox{\hyperlink{union_application_register_ae5d3cf16f820557739bab1976fc6dcc8}{ntc}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Environment Data. \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a161e08a7c91bc23fa80f36171adead3f}{hysteresis}}: 8\\
+\>\>{\em (Old V1.0 only) Hysteresis in ppm of eCO2 in order to avoid multiple interrupts }\\
+\>uint16\_t \mbox{\hyperlink{union_application_register_acd7612e6b462dac50feda9e19689ff0c}{med\_high\_thresh}}: 16\\
+\>\>{\em Medium to high threshold (in ppm) for eCO2 interrupt. }\\
+\>uint16\_t \mbox{\hyperlink{union_application_register_ae69d84acc98da428ad66116e3daa99d8}{low\_med\_thresh}}: 16\\
+\>\>{\em Low to medium threshold (in ppm) for eCO2 interrupt. }\\
+\} \mbox{\hyperlink{union_application_register_ad58c29130522c193feed876531baa90a}{threshold}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Structure of the threshold register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a3b0d741a372e96fc6dd2cb18095e868c}{trivial}}: 8\\
+\>\>{\em Trivial number of version. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_ae2f416b0a34b7beb4ed3873d791ac393}{minor}}: 4\\
+\>\>{\em Minor number of version. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a5bd4e4c943762926c8f653b6224cced2}{major}}: 4\\
+\>\>{\em Major number of version. }\\
+\} \mbox{\hyperlink{union_application_register_acacf81aec22cc311505f2c2e8363e55f}{fw\_boot\_version}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Structure of the Firmware bootloader version register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a3b0d741a372e96fc6dd2cb18095e868c}{trivial}}: 8\\
+\>\>{\em Trivial number of version. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_ae2f416b0a34b7beb4ed3873d791ac393}{minor}}: 4\\
+\>\>{\em Minor number of version. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a5bd4e4c943762926c8f653b6224cced2}{major}}: 4\\
+\>\>{\em Major number of version. }\\
+\} \mbox{\hyperlink{union_application_register_aa0aac4d3d600c35642cf00e4953d143f}{fw\_app\_version}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Structure of the Firmware application version register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) \end{DoxyCompactList}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_ad12c9d2951e327af89e59746d1b3d226}{write\_reg\_invalid}}: 1\\
+\>\>{\em Invalid register address ID. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a2b3d9305e883ec18bb375b58a265bb51}{read\_reg\_invalid}}: 1\\
+\>\>{\em Read request to a mailbox ID that is invalid. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_ac1cd54e98a1f9b1b41ea65176838dae1}{meas\_mode\_invalid}}: 1\\
+\>\>{\em Request to write an unsupported mode to MEAS\_MODE. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a2759d6aaf610578f39c5e905d3d9faaa}{max\_resistance}}: 1\\
+\>\>{\em The sensor resistance measurement has reached or exceeded the maximum range. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_a5afdc7bfd0e35f5d61dff3444cdeae18}{heater\_fault}}: 1\\
+\>\>{\em The Heater current in the CCS811 is not in range. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_ab94a39c08c3ab36f0844b5b493ef9945}{heater\_supply}}: 1\\
+\>\>{\em The Heater voltage is not being applied correctly. }\\
+\>uint8\_t \mbox{\hyperlink{union_application_register_acb7bc06bed6f6408d719334fc41698c7}{reserved}}: 2\\
+\>\>{\em Reserved. }\\
+\} \mbox{\hyperlink{union_application_register_ad9e1797094efde3141e871a6fc254f72}{error\_id}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Structure of the error id register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{union_application_register_a043a3ed1b7aa1a2f596608dd4e6222b2}{sw\+\_\+reset}}
+\begin{DoxyCompactList}\small\item\em Software reset register. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{union_application_register_ae5b7baf8a03c8658a511369ee726b08a}{baseline}}
+\begin{DoxyCompactList}\small\item\em Encoded version of the current baseline used in Algorithm Calculations. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{union_application_register_a93124d2e13be33bebf0974c52bcf4a95}{hw\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em Hardware id register. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{union_application_register_a6461924e20c4d86bd9d51a48fb7b1864}{hw\+\_\+version}}
+\begin{DoxyCompactList}\small\item\em Hardware version register. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{union_application_register_a4935b1dbe41ddae16157f83bd161c550}{buffer}} \mbox{[}8\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer to store data result register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Data Result Register. 
+
+This union represents the \char`\"{}application and boot registers\char`\"{}\+: (See the datasheet \mbox{[}1\mbox{]} for more information) 
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{union_application_register_a7f04a5353de79353be8ea73375a88cdd}\label{union_application_register_a7f04a5353de79353be8ea73375a88cdd}} 
+\index{Application\+Register@{Application\+Register}!alg\+\_\+result\+\_\+data@{alg\+\_\+result\+\_\+data}}
+\index{alg\+\_\+result\+\_\+data@{alg\+\_\+result\+\_\+data}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{alg\+\_\+result\+\_\+data}{alg\_result\_data}}
+{\footnotesize\ttfamily struct \{ ... \}   alg\+\_\+result\+\_\+data}
+
+
+
+Structure of the algorythm result data register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) 
+
+\mbox{\Hypertarget{union_application_register_a24297bc3eb56e16f4d862a69eb773786}\label{union_application_register_a24297bc3eb56e16f4d862a69eb773786}} 
+\index{Application\+Register@{Application\+Register}!app\+\_\+erase@{app\+\_\+erase}}
+\index{app\+\_\+erase@{app\+\_\+erase}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{app\+\_\+erase}{app\_erase}}
+{\footnotesize\ttfamily uint8\+\_\+t app\+\_\+erase}
+
+
+
+(Boot mode only)~\newline
+ 0\+: No erase completed.~\newline
+ 1\+: Application erase operation completed. 
+
+\mbox{\Hypertarget{union_application_register_ad622f34a9f1cc0e8cf002492f2fe8e8a}\label{union_application_register_ad622f34a9f1cc0e8cf002492f2fe8e8a}} 
+\index{Application\+Register@{Application\+Register}!app\+\_\+valid@{app\+\_\+valid}}
+\index{app\+\_\+valid@{app\+\_\+valid}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{app\+\_\+valid}{app\_valid}}
+{\footnotesize\ttfamily uint8\+\_\+t app\+\_\+valid}
+
+
+
+0\+: No application firmware loaded.~\newline
+ 1\+: Valid application firmware loaded. 
+
+\mbox{\Hypertarget{union_application_register_adce608653e619b089b54d75eed8bf6ed}\label{union_application_register_adce608653e619b089b54d75eed8bf6ed}} 
+\index{Application\+Register@{Application\+Register}!app\+\_\+verify@{app\+\_\+verify}}
+\index{app\+\_\+verify@{app\+\_\+verify}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{app\+\_\+verify}{app\_verify}}
+{\footnotesize\ttfamily uint8\+\_\+t app\+\_\+verify}
+
+
+
+(Boot mode only)~\newline
+ 0\+: 0\+: No verify completed.~\newline
+ 1\+: Application verify operation completed.~\newline
+ After issuing a V\+E\+R\+I\+FY command the application software must wait 70ms before issuing any transactions to C\+C\+S811 over the I²C interface. 
+
+\mbox{\Hypertarget{union_application_register_ae5b7baf8a03c8658a511369ee726b08a}\label{union_application_register_ae5b7baf8a03c8658a511369ee726b08a}} 
+\index{Application\+Register@{Application\+Register}!baseline@{baseline}}
+\index{baseline@{baseline}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{baseline}{baseline}}
+{\footnotesize\ttfamily uint16\+\_\+t baseline}
+
+
+
+Encoded version of the current baseline used in Algorithm Calculations. 
+
+\mbox{\Hypertarget{union_application_register_a4935b1dbe41ddae16157f83bd161c550}\label{union_application_register_a4935b1dbe41ddae16157f83bd161c550}} 
+\index{Application\+Register@{Application\+Register}!buffer@{buffer}}
+\index{buffer@{buffer}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily char buffer\mbox{[}8\mbox{]}}
+
+
+
+Buffer to store data result register. 
+
+\mbox{\Hypertarget{union_application_register_a7b89ba3779ca235c32a469e89de8da46}\label{union_application_register_a7b89ba3779ca235c32a469e89de8da46}} 
+\index{Application\+Register@{Application\+Register}!data\+\_\+ready@{data\+\_\+ready}}
+\index{data\+\_\+ready@{data\+\_\+ready}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{data\+\_\+ready}{data\_ready}}
+{\footnotesize\ttfamily uint8\+\_\+t data\+\_\+ready}
+
+
+
+0\+: No new data samples are ready.~\newline
+ 1\+: A new data sample is ready in A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA, this bit is cleared when A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA is read 
+
+\mbox{\Hypertarget{union_application_register_a60b8fb17f5de49bf24544c4ffc59d099}\label{union_application_register_a60b8fb17f5de49bf24544c4ffc59d099}} 
+\index{Application\+Register@{Application\+Register}!drive\+Mode@{drive\+Mode}}
+\index{drive\+Mode@{drive\+Mode}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{drive\+Mode}{driveMode}}
+{\footnotesize\ttfamily uint8\+\_\+t drive\+Mode}
+
+
+
+Sets the measurement mode. 
+
+\mbox{\Hypertarget{union_application_register_a6ae8195dcd841d5d5a27361dbe594a5d}\label{union_application_register_a6ae8195dcd841d5d5a27361dbe594a5d}} 
+\index{Application\+Register@{Application\+Register}!eco2@{eco2}}
+\index{eco2@{eco2}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{eco2}{eco2}}
+{\footnotesize\ttfamily uint16\+\_\+t eco2}
+
+
+
+e\+C\+O2 ppm 
+
+\mbox{\Hypertarget{union_application_register_a521ae6a473252f47fc132cb0b54a8ae0}\label{union_application_register_a521ae6a473252f47fc132cb0b54a8ae0}} 
+\index{Application\+Register@{Application\+Register}!env\+\_\+data@{env\+\_\+data}}
+\index{env\+\_\+data@{env\+\_\+data}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{env\+\_\+data}{env\_data}}
+{\footnotesize\ttfamily struct \{ ... \}   env\+\_\+data}
+
+
+
+Structure of the environment data register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) 
+
+\mbox{\Hypertarget{union_application_register_adc64ccb7538429fe78e3fe0139267370}\label{union_application_register_adc64ccb7538429fe78e3fe0139267370}} 
+\index{Application\+Register@{Application\+Register}!error@{error}}
+\index{error@{error}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{error}{error}}
+{\footnotesize\ttfamily uint8\+\_\+t error}
+
+
+
+0\+: No error.~\newline
+ 1\+: There is an error on the I²C or sensor, the E\+R\+R\+O\+R\+\_\+\+ID register (0x\+E0) contains the error source 
+
+\mbox{\Hypertarget{union_application_register_ae43c81687ca2bd1e128a57d78959ae15}\label{union_application_register_ae43c81687ca2bd1e128a57d78959ae15}} 
+\index{Application\+Register@{Application\+Register}!error\+\_\+id@{error\+\_\+id}}
+\index{error\+\_\+id@{error\+\_\+id}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{error\+\_\+id}{error\_id}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t error\+\_\+id}
+
+
+
+Error\+\_\+id register. 
+
+\mbox{\Hypertarget{union_application_register_ad9e1797094efde3141e871a6fc254f72}\label{union_application_register_ad9e1797094efde3141e871a6fc254f72}} 
+\index{Application\+Register@{Application\+Register}!error\+\_\+id@{error\+\_\+id}}
+\index{error\+\_\+id@{error\+\_\+id}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{error\+\_\+id}{error\_id}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily struct \{ ... \}   error\+\_\+id}
+
+
+
+Structure of the error id register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) 
+
+\mbox{\Hypertarget{union_application_register_aa0aac4d3d600c35642cf00e4953d143f}\label{union_application_register_aa0aac4d3d600c35642cf00e4953d143f}} 
+\index{Application\+Register@{Application\+Register}!fw\+\_\+app\+\_\+version@{fw\+\_\+app\+\_\+version}}
+\index{fw\+\_\+app\+\_\+version@{fw\+\_\+app\+\_\+version}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{fw\+\_\+app\+\_\+version}{fw\_app\_version}}
+{\footnotesize\ttfamily struct \{ ... \}   fw\+\_\+app\+\_\+version}
+
+
+
+Structure of the Firmware application version register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) 
+
+\mbox{\Hypertarget{union_application_register_acacf81aec22cc311505f2c2e8363e55f}\label{union_application_register_acacf81aec22cc311505f2c2e8363e55f}} 
+\index{Application\+Register@{Application\+Register}!fw\+\_\+boot\+\_\+version@{fw\+\_\+boot\+\_\+version}}
+\index{fw\+\_\+boot\+\_\+version@{fw\+\_\+boot\+\_\+version}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{fw\+\_\+boot\+\_\+version}{fw\_boot\_version}}
+{\footnotesize\ttfamily struct \{ ... \}   fw\+\_\+boot\+\_\+version}
+
+
+
+Structure of the Firmware bootloader version register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) 
+
+\mbox{\Hypertarget{union_application_register_aacc84f0d7fba3fd77eff42c1963ece89}\label{union_application_register_aacc84f0d7fba3fd77eff42c1963ece89}} 
+\index{Application\+Register@{Application\+Register}!fwmode@{fwmode}}
+\index{fwmode@{fwmode}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{fwmode}{fwmode}}
+{\footnotesize\ttfamily uint8\+\_\+t fwmode}
+
+
+
+0\+: Firmware is in boot mode, this allows new firmware to be loaded.~\newline
+ 1\+: Firmware is in application mode. 
+
+\mbox{\Hypertarget{union_application_register_a5afdc7bfd0e35f5d61dff3444cdeae18}\label{union_application_register_a5afdc7bfd0e35f5d61dff3444cdeae18}} 
+\index{Application\+Register@{Application\+Register}!heater\+\_\+fault@{heater\+\_\+fault}}
+\index{heater\+\_\+fault@{heater\+\_\+fault}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{heater\+\_\+fault}{heater\_fault}}
+{\footnotesize\ttfamily uint8\+\_\+t heater\+\_\+fault}
+
+
+
+The Heater current in the C\+C\+S811 is not in range. 
+
+\mbox{\Hypertarget{union_application_register_ab94a39c08c3ab36f0844b5b493ef9945}\label{union_application_register_ab94a39c08c3ab36f0844b5b493ef9945}} 
+\index{Application\+Register@{Application\+Register}!heater\+\_\+supply@{heater\+\_\+supply}}
+\index{heater\+\_\+supply@{heater\+\_\+supply}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{heater\+\_\+supply}{heater\_supply}}
+{\footnotesize\ttfamily uint8\+\_\+t heater\+\_\+supply}
+
+
+
+The Heater voltage is not being applied correctly. 
+
+\mbox{\Hypertarget{union_application_register_a3cb62182097ceb535c2f31919c98a0b6}\label{union_application_register_a3cb62182097ceb535c2f31919c98a0b6}} 
+\index{Application\+Register@{Application\+Register}!humidity@{humidity}}
+\index{humidity@{humidity}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{humidity}{humidity}}
+{\footnotesize\ttfamily uint8\+\_\+t humidity}
+
+
+
+Humidity integer part in RH. 
+
+\mbox{\Hypertarget{union_application_register_aef743be1f1c7224b4a275e825e4c4693}\label{union_application_register_aef743be1f1c7224b4a275e825e4c4693}} 
+\index{Application\+Register@{Application\+Register}!humidity\+\_\+fraction@{humidity\+\_\+fraction}}
+\index{humidity\+\_\+fraction@{humidity\+\_\+fraction}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{humidity\+\_\+fraction}{humidity\_fraction}}
+{\footnotesize\ttfamily uint16\+\_\+t humidity\+\_\+fraction}
+
+
+
+Humidity fraction in 1/512RH. 
+
+\mbox{\Hypertarget{union_application_register_a93124d2e13be33bebf0974c52bcf4a95}\label{union_application_register_a93124d2e13be33bebf0974c52bcf4a95}} 
+\index{Application\+Register@{Application\+Register}!hw\+\_\+id@{hw\+\_\+id}}
+\index{hw\+\_\+id@{hw\+\_\+id}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{hw\+\_\+id}{hw\_id}}
+{\footnotesize\ttfamily uint8\+\_\+t hw\+\_\+id}
+
+
+
+Hardware id register. 
+
+\mbox{\Hypertarget{union_application_register_a6461924e20c4d86bd9d51a48fb7b1864}\label{union_application_register_a6461924e20c4d86bd9d51a48fb7b1864}} 
+\index{Application\+Register@{Application\+Register}!hw\+\_\+version@{hw\+\_\+version}}
+\index{hw\+\_\+version@{hw\+\_\+version}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{hw\+\_\+version}{hw\_version}}
+{\footnotesize\ttfamily uint8\+\_\+t hw\+\_\+version}
+
+
+
+Hardware version register. 
+
+\mbox{\Hypertarget{union_application_register_a161e08a7c91bc23fa80f36171adead3f}\label{union_application_register_a161e08a7c91bc23fa80f36171adead3f}} 
+\index{Application\+Register@{Application\+Register}!hysteresis@{hysteresis}}
+\index{hysteresis@{hysteresis}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{hysteresis}{hysteresis}}
+{\footnotesize\ttfamily uint8\+\_\+t hysteresis}
+
+
+
+(Old V1.\+0 only) Hysteresis in ppm of e\+C\+O2 in order to avoid multiple interrupts 
+
+\mbox{\Hypertarget{union_application_register_a16598183bfc37e17f0b615a726e9e806}\label{union_application_register_a16598183bfc37e17f0b615a726e9e806}} 
+\index{Application\+Register@{Application\+Register}!int\+\_\+data\+\_\+ready@{int\+\_\+data\+\_\+ready}}
+\index{int\+\_\+data\+\_\+ready@{int\+\_\+data\+\_\+ready}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{int\+\_\+data\+\_\+ready}{int\_data\_ready}}
+{\footnotesize\ttfamily uint8\+\_\+t int\+\_\+data\+\_\+ready}
+
+
+
+0\+: Interrupt generation is disabled.~\newline
+ 1\+: The n\+I\+NT signal is asserted (driven low) when a new sample is ready in A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA 
+
+\mbox{\Hypertarget{union_application_register_a0632faf7c6c7fe7dde6437fadea96dfd}\label{union_application_register_a0632faf7c6c7fe7dde6437fadea96dfd}} 
+\index{Application\+Register@{Application\+Register}!int\+\_\+thresh@{int\+\_\+thresh}}
+\index{int\+\_\+thresh@{int\+\_\+thresh}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{int\+\_\+thresh}{int\_thresh}}
+{\footnotesize\ttfamily uint8\+\_\+t int\+\_\+thresh}
+
+
+
+0\+: Normal interrupt mode (if enabled).~\newline
+ 1\+: Interrupt mode (if enabled) only asserts the n\+I\+NT signal (driven low) if the new A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA crosses one of the thresholds set in the T\+H\+R\+E\+S\+H\+O\+L\+DS register by more than the hysteresis value 
+
+\mbox{\Hypertarget{union_application_register_ae69d84acc98da428ad66116e3daa99d8}\label{union_application_register_ae69d84acc98da428ad66116e3daa99d8}} 
+\index{Application\+Register@{Application\+Register}!low\+\_\+med\+\_\+thresh@{low\+\_\+med\+\_\+thresh}}
+\index{low\+\_\+med\+\_\+thresh@{low\+\_\+med\+\_\+thresh}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{low\+\_\+med\+\_\+thresh}{low\_med\_thresh}}
+{\footnotesize\ttfamily uint16\+\_\+t low\+\_\+med\+\_\+thresh}
+
+
+
+Low to medium threshold (in ppm) for e\+C\+O2 interrupt. 
+
+\mbox{\Hypertarget{union_application_register_a5bd4e4c943762926c8f653b6224cced2}\label{union_application_register_a5bd4e4c943762926c8f653b6224cced2}} 
+\index{Application\+Register@{Application\+Register}!major@{major}}
+\index{major@{major}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{major}{major}}
+{\footnotesize\ttfamily uint8\+\_\+t major}
+
+
+
+Major number of version. 
+
+\mbox{\Hypertarget{union_application_register_a2759d6aaf610578f39c5e905d3d9faaa}\label{union_application_register_a2759d6aaf610578f39c5e905d3d9faaa}} 
+\index{Application\+Register@{Application\+Register}!max\+\_\+resistance@{max\+\_\+resistance}}
+\index{max\+\_\+resistance@{max\+\_\+resistance}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{max\+\_\+resistance}{max\_resistance}}
+{\footnotesize\ttfamily uint8\+\_\+t max\+\_\+resistance}
+
+
+
+The sensor resistance measurement has reached or exceeded the maximum range. 
+
+\mbox{\Hypertarget{union_application_register_ab78fc84f99f28c290625db387ae27fd2}\label{union_application_register_ab78fc84f99f28c290625db387ae27fd2}} 
+\index{Application\+Register@{Application\+Register}!meas\+\_\+mode@{meas\+\_\+mode}}
+\index{meas\+\_\+mode@{meas\+\_\+mode}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{meas\+\_\+mode}{meas\_mode}}
+{\footnotesize\ttfamily struct \{ ... \}   meas\+\_\+mode}
+
+
+
+Structure of the measurement mode register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) 
+
+\mbox{\Hypertarget{union_application_register_ac1cd54e98a1f9b1b41ea65176838dae1}\label{union_application_register_ac1cd54e98a1f9b1b41ea65176838dae1}} 
+\index{Application\+Register@{Application\+Register}!meas\+\_\+mode\+\_\+invalid@{meas\+\_\+mode\+\_\+invalid}}
+\index{meas\+\_\+mode\+\_\+invalid@{meas\+\_\+mode\+\_\+invalid}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{meas\+\_\+mode\+\_\+invalid}{meas\_mode\_invalid}}
+{\footnotesize\ttfamily uint8\+\_\+t meas\+\_\+mode\+\_\+invalid}
+
+
+
+Request to write an unsupported mode to M\+E\+A\+S\+\_\+\+M\+O\+DE. 
+
+\mbox{\Hypertarget{union_application_register_acd7612e6b462dac50feda9e19689ff0c}\label{union_application_register_acd7612e6b462dac50feda9e19689ff0c}} 
+\index{Application\+Register@{Application\+Register}!med\+\_\+high\+\_\+thresh@{med\+\_\+high\+\_\+thresh}}
+\index{med\+\_\+high\+\_\+thresh@{med\+\_\+high\+\_\+thresh}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{med\+\_\+high\+\_\+thresh}{med\_high\_thresh}}
+{\footnotesize\ttfamily uint16\+\_\+t med\+\_\+high\+\_\+thresh}
+
+
+
+Medium to high threshold (in ppm) for e\+C\+O2 interrupt. 
+
+\mbox{\Hypertarget{union_application_register_ae2f416b0a34b7beb4ed3873d791ac393}\label{union_application_register_ae2f416b0a34b7beb4ed3873d791ac393}} 
+\index{Application\+Register@{Application\+Register}!minor@{minor}}
+\index{minor@{minor}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{minor}{minor}}
+{\footnotesize\ttfamily uint8\+\_\+t minor}
+
+
+
+Minor number of version. 
+
+\mbox{\Hypertarget{union_application_register_ae5d3cf16f820557739bab1976fc6dcc8}\label{union_application_register_ae5d3cf16f820557739bab1976fc6dcc8}} 
+\index{Application\+Register@{Application\+Register}!ntc@{ntc}}
+\index{ntc@{ntc}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{ntc}{ntc}}
+{\footnotesize\ttfamily struct \{ ... \}   ntc}
+
+
+
+Environment Data. 
+
+Structure of the N\+TC register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) \mbox{\Hypertarget{union_application_register_af2995a35bf1791d033118b3e44cdcc44}\label{union_application_register_af2995a35bf1791d033118b3e44cdcc44}} 
+\index{Application\+Register@{Application\+Register}!raw\+\_\+data\+\_\+adc@{raw\+\_\+data\+\_\+adc}}
+\index{raw\+\_\+data\+\_\+adc@{raw\+\_\+data\+\_\+adc}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{raw\+\_\+data\+\_\+adc}{raw\_data\_adc}}
+{\footnotesize\ttfamily uint16\+\_\+t raw\+\_\+data\+\_\+adc}
+
+
+
+10bit A\+DC voltage across the sensor with the selected current (1023 = 1.\+65V) 
+
+\mbox{\Hypertarget{union_application_register_a7a36a66e5a41b8a2b261f9fa8c23deb4}\label{union_application_register_a7a36a66e5a41b8a2b261f9fa8c23deb4}} 
+\index{Application\+Register@{Application\+Register}!raw\+\_\+data\+\_\+current@{raw\+\_\+data\+\_\+current}}
+\index{raw\+\_\+data\+\_\+current@{raw\+\_\+data\+\_\+current}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{raw\+\_\+data\+\_\+current}{raw\_data\_current}}
+{\footnotesize\ttfamily uint8\+\_\+t raw\+\_\+data\+\_\+current}
+
+
+
+The value of the current through the sensor (0μA to 63μA) 
+
+\mbox{\Hypertarget{union_application_register_a2b3d9305e883ec18bb375b58a265bb51}\label{union_application_register_a2b3d9305e883ec18bb375b58a265bb51}} 
+\index{Application\+Register@{Application\+Register}!read\+\_\+reg\+\_\+invalid@{read\+\_\+reg\+\_\+invalid}}
+\index{read\+\_\+reg\+\_\+invalid@{read\+\_\+reg\+\_\+invalid}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{read\+\_\+reg\+\_\+invalid}{read\_reg\_invalid}}
+{\footnotesize\ttfamily uint8\+\_\+t read\+\_\+reg\+\_\+invalid}
+
+
+
+Read request to a mailbox ID that is invalid. 
+
+\mbox{\Hypertarget{union_application_register_acb7bc06bed6f6408d719334fc41698c7}\label{union_application_register_acb7bc06bed6f6408d719334fc41698c7}} 
+\index{Application\+Register@{Application\+Register}!reserved@{reserved}}
+\index{reserved@{reserved}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{reserved}{reserved}}
+{\footnotesize\ttfamily uint8\+\_\+t reserved}
+
+
+
+Reserved. 
+
+\mbox{\Hypertarget{union_application_register_a2a2556147677ece60b8aadf4a0d608ed}\label{union_application_register_a2a2556147677ece60b8aadf4a0d608ed}} 
+\index{Application\+Register@{Application\+Register}!reserved1@{reserved1}}
+\index{reserved1@{reserved1}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{reserved1}{reserved1}}
+{\footnotesize\ttfamily uint8\+\_\+t reserved1}
+
+
+
+Not used bits. 
+
+\mbox{\Hypertarget{union_application_register_a646df3514a24749a0f54731bf41c6c67}\label{union_application_register_a646df3514a24749a0f54731bf41c6c67}} 
+\index{Application\+Register@{Application\+Register}!reserved2@{reserved2}}
+\index{reserved2@{reserved2}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{reserved2}{reserved2}}
+{\footnotesize\ttfamily uint8\+\_\+t reserved2}
+
+
+
+Not used bit. 
+
+\mbox{\Hypertarget{union_application_register_a99b0728eb13db9f7e1b6c51cb062ecac}\label{union_application_register_a99b0728eb13db9f7e1b6c51cb062ecac}} 
+\index{Application\+Register@{Application\+Register}!status@{status}}
+\index{status@{status}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{status}{status}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily struct \{ ... \}   status}
+
+
+
+Structure of the status register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) 
+
+\mbox{\Hypertarget{union_application_register_ade818037fd6c985038ff29656089758d}\label{union_application_register_ade818037fd6c985038ff29656089758d}} 
+\index{Application\+Register@{Application\+Register}!status@{status}}
+\index{status@{status}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{status}{status}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t status}
+
+
+
+Status register. 
+
+\mbox{\Hypertarget{union_application_register_a043a3ed1b7aa1a2f596608dd4e6222b2}\label{union_application_register_a043a3ed1b7aa1a2f596608dd4e6222b2}} 
+\index{Application\+Register@{Application\+Register}!sw\+\_\+reset@{sw\+\_\+reset}}
+\index{sw\+\_\+reset@{sw\+\_\+reset}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{sw\+\_\+reset}{sw\_reset}}
+{\footnotesize\ttfamily uint8\+\_\+t sw\+\_\+reset}
+
+
+
+Software reset register. 
+
+\mbox{\Hypertarget{union_application_register_ad8c21d94b1e5295e681983b7dd453eb8}\label{union_application_register_ad8c21d94b1e5295e681983b7dd453eb8}} 
+\index{Application\+Register@{Application\+Register}!temperature@{temperature}}
+\index{temperature@{temperature}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{temperature}{temperature}}
+{\footnotesize\ttfamily uint8\+\_\+t temperature}
+
+
+
+Temperature integer part in degree celsius. 
+
+\mbox{\Hypertarget{union_application_register_a369e24a68ff6c1f92b752677988145d9}\label{union_application_register_a369e24a68ff6c1f92b752677988145d9}} 
+\index{Application\+Register@{Application\+Register}!temperature\+\_\+fraction@{temperature\+\_\+fraction}}
+\index{temperature\+\_\+fraction@{temperature\+\_\+fraction}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{temperature\+\_\+fraction}{temperature\_fraction}}
+{\footnotesize\ttfamily uint16\+\_\+t temperature\+\_\+fraction}
+
+
+
+Temperature fraction in 1/512 degree celsius. 
+
+\mbox{\Hypertarget{union_application_register_ad58c29130522c193feed876531baa90a}\label{union_application_register_ad58c29130522c193feed876531baa90a}} 
+\index{Application\+Register@{Application\+Register}!threshold@{threshold}}
+\index{threshold@{threshold}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{threshold}{threshold}}
+{\footnotesize\ttfamily struct \{ ... \}   threshold}
+
+
+
+Structure of the threshold register of the C\+C\+S811. (See datasheet \mbox{[}1\mbox{]}) 
+
+\mbox{\Hypertarget{union_application_register_a3b0d741a372e96fc6dd2cb18095e868c}\label{union_application_register_a3b0d741a372e96fc6dd2cb18095e868c}} 
+\index{Application\+Register@{Application\+Register}!trivial@{trivial}}
+\index{trivial@{trivial}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{trivial}{trivial}}
+{\footnotesize\ttfamily uint8\+\_\+t trivial}
+
+
+
+Trivial number of version. 
+
+\mbox{\Hypertarget{union_application_register_a26fd892e05117ff980a779acfac83982}\label{union_application_register_a26fd892e05117ff980a779acfac83982}} 
+\index{Application\+Register@{Application\+Register}!tvoc@{tvoc}}
+\index{tvoc@{tvoc}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{tvoc}{tvoc}}
+{\footnotesize\ttfamily uint16\+\_\+t tvoc}
+
+
+
+T\+V\+OC ppb. 
+
+\mbox{\Hypertarget{union_application_register_a3b5ca9a6349d352395207fa5d3ce857c}\label{union_application_register_a3b5ca9a6349d352395207fa5d3ce857c}} 
+\index{Application\+Register@{Application\+Register}!v\+\_\+\+Rntc@{v\+\_\+\+Rntc}}
+\index{v\+\_\+\+Rntc@{v\+\_\+\+Rntc}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{v\+\_\+\+Rntc}{v\_Rntc}}
+{\footnotesize\ttfamily uint16\+\_\+t v\+\_\+\+Rntc}
+
+
+
+Voltage across R\+\_\+\+N\+TC (mV) 
+
+\mbox{\Hypertarget{union_application_register_ad05dd83b4bd4782a07617cae54d23b21}\label{union_application_register_ad05dd83b4bd4782a07617cae54d23b21}} 
+\index{Application\+Register@{Application\+Register}!v\+\_\+\+Rref@{v\+\_\+\+Rref}}
+\index{v\+\_\+\+Rref@{v\+\_\+\+Rref}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{v\+\_\+\+Rref}{v\_Rref}}
+{\footnotesize\ttfamily uint16\+\_\+t v\+\_\+\+Rref}
+
+
+
+Voltage across R\+\_\+\+R\+EF (mV) 
+
+\mbox{\Hypertarget{union_application_register_ad12c9d2951e327af89e59746d1b3d226}\label{union_application_register_ad12c9d2951e327af89e59746d1b3d226}} 
+\index{Application\+Register@{Application\+Register}!write\+\_\+reg\+\_\+invalid@{write\+\_\+reg\+\_\+invalid}}
+\index{write\+\_\+reg\+\_\+invalid@{write\+\_\+reg\+\_\+invalid}!Application\+Register@{Application\+Register}}
+\subsubsection{\texorpdfstring{write\+\_\+reg\+\_\+invalid}{write\_reg\_invalid}}
+{\footnotesize\ttfamily uint8\+\_\+t write\+\_\+reg\+\_\+invalid}
+
+
+
+Invalid register address ID. 
+
+
+
+The documentation for this union was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{libccs811_8h}{libccs811.\+h}}\end{DoxyCompactItemize}

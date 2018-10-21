@@ -1,0 +1,513 @@
+.TH "ApplicationRegister" 3 "Sat Oct 20 2018" "Version 1.0.0" "libccs811" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ApplicationRegister \- Data Result Register\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <libccs811\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   uint8_t \fBerror\fP: 1"
+.br
+.RI "0: No error\&.
+.br
+ 1: There is an error on the I²C or sensor, the ERROR_ID register (0xE0) contains the error source "
+.ti -1c
+.RI "   uint8_t \fBreserved1\fP: 2"
+.br
+.RI "Not used bits\&. "
+.ti -1c
+.RI "   uint8_t \fBdata_ready\fP: 1"
+.br
+.RI "0: No new data samples are ready\&.
+.br
+ 1: A new data sample is ready in ALG_RESULT_DATA, this bit is cleared when ALG_RESULT_DATA is read "
+.ti -1c
+.RI "   uint8_t \fBapp_valid\fP: 1"
+.br
+.RI "0: No application firmware loaded\&.
+.br
+ 1: Valid application firmware loaded\&. "
+.ti -1c
+.RI "   uint8_t \fBapp_verify\fP: 1"
+.br
+.RI "(Boot mode only)
+.br
+ 0: 0: No verify completed\&.
+.br
+ 1: Application verify operation completed\&.
+.br
+ After issuing a VERIFY command the application software must wait 70ms before issuing any transactions to CCS811 over the I²C interface\&. "
+.ti -1c
+.RI "   uint8_t \fBapp_erase\fP: 1"
+.br
+.RI "(Boot mode only)
+.br
+ 0: No erase completed\&.
+.br
+ 1: Application erase operation completed\&. "
+.ti -1c
+.RI "   uint8_t \fBfwmode\fP: 1"
+.br
+.RI "0: Firmware is in boot mode, this allows new firmware to be loaded\&.
+.br
+ 1: Firmware is in application mode\&. "
+.ti -1c
+.RI "} \fBstatus\fP"
+.br
+.RI "Structure of the status register of the CCS811\&. (See datasheet [1]) "
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   uint8_t \fBreserved1\fP: 2"
+.br
+.RI "Not used bits\&. "
+.ti -1c
+.RI "   uint8_t \fBint_thresh\fP: 1"
+.br
+.RI "0: Normal interrupt mode (if enabled)\&.
+.br
+ 1: Interrupt mode (if enabled) only asserts the nINT signal (driven low) if the new ALG_RESULT_DATA crosses one of the thresholds set in the THRESHOLDS register by more than the hysteresis value "
+.ti -1c
+.RI "   uint8_t \fBint_data_ready\fP: 1"
+.br
+.RI "0: Interrupt generation is disabled\&.
+.br
+ 1: The nINT signal is asserted (driven low) when a new sample is ready in ALG_RESULT_DATA "
+.ti -1c
+.RI "   uint8_t \fBdriveMode\fP: 3"
+.br
+.RI "Sets the measurement mode\&. "
+.ti -1c
+.RI "   uint8_t \fBreserved2\fP: 1"
+.br
+.RI "Not used bit\&. "
+.ti -1c
+.RI "} \fBmeas_mode\fP"
+.br
+.RI "Structure of the measurement mode register of the CCS811\&. (See datasheet [1]) "
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   uint16_t \fBeco2\fP: 16"
+.br
+.RI "eCO2 ppm "
+.ti -1c
+.RI "   uint16_t \fBtvoc\fP: 16"
+.br
+.RI "TVOC ppb\&. "
+.ti -1c
+.RI "   uint8_t \fBstatus\fP: 8"
+.br
+.RI "Status register\&. "
+.ti -1c
+.RI "   uint8_t \fBerror_id\fP: 8"
+.br
+.RI "Error_id register\&. "
+.ti -1c
+.RI "   uint8_t \fBraw_data_current\fP: 6"
+.br
+.RI "The value of the current through the sensor (0μA to 63μA) "
+.ti -1c
+.RI "   uint16_t \fBraw_data_adc\fP: 10"
+.br
+.RI "10bit ADC voltage across the sensor with the selected current (1023 = 1\&.65V) "
+.ti -1c
+.RI "} \fBalg_result_data\fP"
+.br
+.RI "Structure of the algorythm result data register of the CCS811\&. (See datasheet [1]) "
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   uint16_t \fBtemperature_fraction\fP: 9"
+.br
+.RI "Temperature fraction in 1/512 degree celsius\&. "
+.ti -1c
+.RI "   uint8_t \fBtemperature\fP: 7"
+.br
+.RI "Temperature integer part in degree celsius\&. "
+.ti -1c
+.RI "   uint16_t \fBhumidity_fraction\fP: 9"
+.br
+.RI "Humidity fraction in 1/512RH\&. "
+.ti -1c
+.RI "   uint8_t \fBhumidity\fP: 7"
+.br
+.RI "Humidity integer part in RH\&. "
+.ti -1c
+.RI "} \fBenv_data\fP"
+.br
+.RI "Structure of the environment data register of the CCS811\&. (See datasheet [1]) "
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   uint16_t \fBv_Rntc\fP: 16"
+.br
+.RI "Voltage across R_NTC (mV) "
+.ti -1c
+.RI "   uint16_t \fBv_Rref\fP: 16"
+.br
+.RI "Voltage across R_REF (mV) "
+.ti -1c
+.RI "} \fBntc\fP"
+.br
+.RI "Environment Data\&. "
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   uint8_t \fBhysteresis\fP: 8"
+.br
+.RI "(Old V1\&.0 only) Hysteresis in ppm of eCO2 in order to avoid multiple interrupts "
+.ti -1c
+.RI "   uint16_t \fBmed_high_thresh\fP: 16"
+.br
+.RI "Medium to high threshold (in ppm) for eCO2 interrupt\&. "
+.ti -1c
+.RI "   uint16_t \fBlow_med_thresh\fP: 16"
+.br
+.RI "Low to medium threshold (in ppm) for eCO2 interrupt\&. "
+.ti -1c
+.RI "} \fBthreshold\fP"
+.br
+.RI "Structure of the threshold register of the CCS811\&. (See datasheet [1]) "
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   uint8_t \fBtrivial\fP: 8"
+.br
+.RI "Trivial number of version\&. "
+.ti -1c
+.RI "   uint8_t \fBminor\fP: 4"
+.br
+.RI "Minor number of version\&. "
+.ti -1c
+.RI "   uint8_t \fBmajor\fP: 4"
+.br
+.RI "Major number of version\&. "
+.ti -1c
+.RI "} \fBfw_boot_version\fP"
+.br
+.RI "Structure of the Firmware bootloader version register of the CCS811\&. (See datasheet [1]) "
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   uint8_t \fBtrivial\fP: 8"
+.br
+.RI "Trivial number of version\&. "
+.ti -1c
+.RI "   uint8_t \fBminor\fP: 4"
+.br
+.RI "Minor number of version\&. "
+.ti -1c
+.RI "   uint8_t \fBmajor\fP: 4"
+.br
+.RI "Major number of version\&. "
+.ti -1c
+.RI "} \fBfw_app_version\fP"
+.br
+.RI "Structure of the Firmware application version register of the CCS811\&. (See datasheet [1]) "
+.ti -1c
+.RI "struct {"
+.br
+.ti -1c
+.RI "   uint8_t \fBwrite_reg_invalid\fP: 1"
+.br
+.RI "Invalid register address ID\&. "
+.ti -1c
+.RI "   uint8_t \fBread_reg_invalid\fP: 1"
+.br
+.RI "Read request to a mailbox ID that is invalid\&. "
+.ti -1c
+.RI "   uint8_t \fBmeas_mode_invalid\fP: 1"
+.br
+.RI "Request to write an unsupported mode to MEAS_MODE\&. "
+.ti -1c
+.RI "   uint8_t \fBmax_resistance\fP: 1"
+.br
+.RI "The sensor resistance measurement has reached or exceeded the maximum range\&. "
+.ti -1c
+.RI "   uint8_t \fBheater_fault\fP: 1"
+.br
+.RI "The Heater current in the CCS811 is not in range\&. "
+.ti -1c
+.RI "   uint8_t \fBheater_supply\fP: 1"
+.br
+.RI "The Heater voltage is not being applied correctly\&. "
+.ti -1c
+.RI "   uint8_t \fBreserved\fP: 2"
+.br
+.RI "Reserved\&. "
+.ti -1c
+.RI "} \fBerror_id\fP"
+.br
+.RI "Structure of the error id register of the CCS811\&. (See datasheet [1]) "
+.ti -1c
+.RI "uint8_t \fBsw_reset\fP"
+.br
+.RI "Software reset register\&. "
+.ti -1c
+.RI "uint16_t \fBbaseline\fP"
+.br
+.RI "Encoded version of the current baseline used in Algorithm Calculations\&. "
+.ti -1c
+.RI "uint8_t \fBhw_id\fP"
+.br
+.RI "Hardware id register\&. "
+.ti -1c
+.RI "uint8_t \fBhw_version\fP"
+.br
+.RI "Hardware version register\&. "
+.ti -1c
+.RI "char \fBbuffer\fP [8]"
+.br
+.RI "Buffer to store data result register\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Data Result Register\&. 
+
+This union represents the 'application and boot registers': (See the datasheet [1] for more information) 
+.SH "Field Documentation"
+.PP 
+.SS "struct { \&.\&.\&. }   alg_result_data"
+
+.PP
+Structure of the algorythm result data register of the CCS811\&. (See datasheet [1]) 
+.SS "uint8_t app_erase"
+
+.PP
+(Boot mode only)
+.br
+ 0: No erase completed\&.
+.br
+ 1: Application erase operation completed\&. 
+.SS "uint8_t app_valid"
+
+.PP
+0: No application firmware loaded\&.
+.br
+ 1: Valid application firmware loaded\&. 
+.SS "uint8_t app_verify"
+
+.PP
+(Boot mode only)
+.br
+ 0: 0: No verify completed\&.
+.br
+ 1: Application verify operation completed\&.
+.br
+ After issuing a VERIFY command the application software must wait 70ms before issuing any transactions to CCS811 over the I²C interface\&. 
+.SS "uint16_t baseline"
+
+.PP
+Encoded version of the current baseline used in Algorithm Calculations\&. 
+.SS "char buffer[8]"
+
+.PP
+Buffer to store data result register\&. 
+.SS "uint8_t data_ready"
+
+.PP
+0: No new data samples are ready\&.
+.br
+ 1: A new data sample is ready in ALG_RESULT_DATA, this bit is cleared when ALG_RESULT_DATA is read 
+.SS "uint8_t driveMode"
+
+.PP
+Sets the measurement mode\&. 
+.SS "uint16_t eco2"
+
+.PP
+eCO2 ppm 
+.SS "struct { \&.\&.\&. }   env_data"
+
+.PP
+Structure of the environment data register of the CCS811\&. (See datasheet [1]) 
+.SS "uint8_t error"
+
+.PP
+0: No error\&.
+.br
+ 1: There is an error on the I²C or sensor, the ERROR_ID register (0xE0) contains the error source 
+.SS "uint8_t error_id"
+
+.PP
+Error_id register\&. 
+.SS "struct { \&.\&.\&. }   error_id"
+
+.PP
+Structure of the error id register of the CCS811\&. (See datasheet [1]) 
+.SS "struct { \&.\&.\&. }   fw_app_version"
+
+.PP
+Structure of the Firmware application version register of the CCS811\&. (See datasheet [1]) 
+.SS "struct { \&.\&.\&. }   fw_boot_version"
+
+.PP
+Structure of the Firmware bootloader version register of the CCS811\&. (See datasheet [1]) 
+.SS "uint8_t fwmode"
+
+.PP
+0: Firmware is in boot mode, this allows new firmware to be loaded\&.
+.br
+ 1: Firmware is in application mode\&. 
+.SS "uint8_t heater_fault"
+
+.PP
+The Heater current in the CCS811 is not in range\&. 
+.SS "uint8_t heater_supply"
+
+.PP
+The Heater voltage is not being applied correctly\&. 
+.SS "uint8_t humidity"
+
+.PP
+Humidity integer part in RH\&. 
+.SS "uint16_t humidity_fraction"
+
+.PP
+Humidity fraction in 1/512RH\&. 
+.SS "uint8_t hw_id"
+
+.PP
+Hardware id register\&. 
+.SS "uint8_t hw_version"
+
+.PP
+Hardware version register\&. 
+.SS "uint8_t hysteresis"
+
+.PP
+(Old V1\&.0 only) Hysteresis in ppm of eCO2 in order to avoid multiple interrupts 
+.SS "uint8_t int_data_ready"
+
+.PP
+0: Interrupt generation is disabled\&.
+.br
+ 1: The nINT signal is asserted (driven low) when a new sample is ready in ALG_RESULT_DATA 
+.SS "uint8_t int_thresh"
+
+.PP
+0: Normal interrupt mode (if enabled)\&.
+.br
+ 1: Interrupt mode (if enabled) only asserts the nINT signal (driven low) if the new ALG_RESULT_DATA crosses one of the thresholds set in the THRESHOLDS register by more than the hysteresis value 
+.SS "uint16_t low_med_thresh"
+
+.PP
+Low to medium threshold (in ppm) for eCO2 interrupt\&. 
+.SS "uint8_t major"
+
+.PP
+Major number of version\&. 
+.SS "uint8_t max_resistance"
+
+.PP
+The sensor resistance measurement has reached or exceeded the maximum range\&. 
+.SS "struct { \&.\&.\&. }   meas_mode"
+
+.PP
+Structure of the measurement mode register of the CCS811\&. (See datasheet [1]) 
+.SS "uint8_t meas_mode_invalid"
+
+.PP
+Request to write an unsupported mode to MEAS_MODE\&. 
+.SS "uint16_t med_high_thresh"
+
+.PP
+Medium to high threshold (in ppm) for eCO2 interrupt\&. 
+.SS "uint8_t minor"
+
+.PP
+Minor number of version\&. 
+.SS "struct { \&.\&.\&. }   ntc"
+
+.PP
+Environment Data\&. Structure of the NTC register of the CCS811\&. (See datasheet [1]) 
+.SS "uint16_t raw_data_adc"
+
+.PP
+10bit ADC voltage across the sensor with the selected current (1023 = 1\&.65V) 
+.SS "uint8_t raw_data_current"
+
+.PP
+The value of the current through the sensor (0μA to 63μA) 
+.SS "uint8_t read_reg_invalid"
+
+.PP
+Read request to a mailbox ID that is invalid\&. 
+.SS "uint8_t reserved"
+
+.PP
+Reserved\&. 
+.SS "uint8_t reserved1"
+
+.PP
+Not used bits\&. 
+.SS "uint8_t reserved2"
+
+.PP
+Not used bit\&. 
+.SS "struct { \&.\&.\&. }   status"
+
+.PP
+Structure of the status register of the CCS811\&. (See datasheet [1]) 
+.SS "uint8_t status"
+
+.PP
+Status register\&. 
+.SS "uint8_t sw_reset"
+
+.PP
+Software reset register\&. 
+.SS "uint8_t temperature"
+
+.PP
+Temperature integer part in degree celsius\&. 
+.SS "uint16_t temperature_fraction"
+
+.PP
+Temperature fraction in 1/512 degree celsius\&. 
+.SS "struct { \&.\&.\&. }   threshold"
+
+.PP
+Structure of the threshold register of the CCS811\&. (See datasheet [1]) 
+.SS "uint8_t trivial"
+
+.PP
+Trivial number of version\&. 
+.SS "uint16_t tvoc"
+
+.PP
+TVOC ppb\&. 
+.SS "uint16_t v_Rntc"
+
+.PP
+Voltage across R_NTC (mV) 
+.SS "uint16_t v_Rref"
+
+.PP
+Voltage across R_REF (mV) 
+.SS "uint8_t write_reg_invalid"
+
+.PP
+Invalid register address ID\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libccs811 from the source code\&.

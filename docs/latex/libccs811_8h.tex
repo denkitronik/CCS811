@@ -1,0 +1,548 @@
+\hypertarget{libccs811_8h}{}\section{libccs811.\+h File Reference}
+\label{libccs811_8h}\index{libccs811.\+h@{libccs811.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{union_application_register}{Application\+Register}}
+\begin{DoxyCompactList}\small\item\em Data Result Register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{libccs811_8h_ad8971d3db1c4e6708bece49e5d7556d9}{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH}}~0x5b
+\begin{DoxyCompactList}\small\item\em Pin Addr is high\+: sets address to 0x5b. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a1cb736038ed2abd8773148262f737826}{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+L\+OW}}~0x5a
+\begin{DoxyCompactList}\small\item\em Pin Addr is low\+: sets address to 0x5a. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a59279bee44f34d08b3cbf3a89fb0d8d9}{S\+T\+A\+T\+US}}~0x00,1
+\begin{DoxyCompactList}\small\item\em (R) (Bootloader) (Application) Status register. Read only, 1 byte \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a5ba2b12135a7a55535ff651458ed0353}{M\+E\+A\+S\+\_\+\+M\+O\+DE}}~0x01,1
+\begin{DoxyCompactList}\small\item\em (RW) (Application) meas\+\_\+mode register, Read/\+Write 1 byte \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a38e7b83f124795805cc78f95034463e3}{A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA}}~0x02,8
+\begin{DoxyCompactList}\small\item\em (R) (Application) Algorythm result data register. Read, up to 8 bytes \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a7140d943b6f40ad3c4bdab5a2073c2f6}{R\+A\+W\+\_\+\+D\+A\+TA}}~0x03,2
+\begin{DoxyCompactList}\small\item\em (R) (Application) Raw data register. Read, 2 bytes \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_aa257017bfb68bba7c3a65506e31566e8}{E\+N\+V\+\_\+\+D\+A\+TA}}~0x05,4
+\begin{DoxyCompactList}\small\item\em (W) (Application) Environment data register. Write, 4 bytes \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a2df8ccf86808a610221d62f6609dc964}{N\+TC}}~0x06,4
+\begin{DoxyCompactList}\small\item\em (R) (Application) (Old V1.\+0 Only) N\+TC sensor register. Read, 4 bytes \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a9f4c33398c548b397597c914cf8b536e}{T\+H\+R\+E\+S\+H\+O\+L\+DS}}~0x10,4
+\begin{DoxyCompactList}\small\item\em (W) (Application) Thresholds register. Write, 4 bytes \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a7f75e0f0b14506d1bb91cdcb6516daed}{B\+A\+S\+E\+L\+I\+NE}}~0x11,2
+\begin{DoxyCompactList}\small\item\em (RW) (Application) Baseline register. Read/\+Write, 2 bytes \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a3c6656f855f36c041117c94ba1106520}{H\+W\+\_\+\+ID}}~0x20,1
+\begin{DoxyCompactList}\small\item\em (R) (Bootloader) (Application) Hardware id register. Read, 1 byte \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_ac74274f3d1cd03778e223a3bedb3a13a}{H\+W\+\_\+\+V\+E\+R\+S\+I\+ON}}~0x21,1
+\begin{DoxyCompactList}\small\item\em (R) (Bootloader) (Application) Hardware version register. Read, 1 byte \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a0b1352327b4036dfddd632a9a589f91c}{F\+W\+\_\+\+B\+O\+O\+T\+\_\+\+V\+E\+R\+S\+I\+ON}}~0x23,2
+\begin{DoxyCompactList}\small\item\em (R) (Bootloader) (Application) Firmware boot version register. Read, 2 bytes \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a46c9bbbbc9a91343d1c7aaf0af33766b}{F\+W\+\_\+\+A\+P\+P\+\_\+\+V\+E\+R\+S\+I\+ON}}~0x24,2
+\begin{DoxyCompactList}\small\item\em (R) (Bootloader) (Application) Firmware application version register. Read, 2 bytes \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a9ddb3f559caa38b86fcc504180435b33}{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+A\+TE}}~0x\+A0,1
+\begin{DoxyCompactList}\small\item\em (R) (Application) Internal Status register (No documentation available for this register). Read, 1 byte \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a183bb51af7befc02499fab053242c8d9}{E\+R\+R\+O\+R\+\_\+\+ID}}~0x\+E0,1
+\begin{DoxyCompactList}\small\item\em (R) (Bootloader) (Application) Error Id register. Read, 1 byte \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a2ffca08817d08a03c80d547bde271577}{A\+P\+P\+\_\+\+E\+R\+A\+SE}}~0x\+F1,4
+\begin{DoxyCompactList}\small\item\em (W) (Bootloader) If the correct 4 bytes (0x\+E7 0x\+A7 0x\+E6 0x09) are written to this register in a single sequence the device will start the application erase \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_aa8c07c7ad943e86f3ab77a54634e984a}{A\+P\+P\+\_\+\+D\+A\+TA}}~0x\+F2,9
+\begin{DoxyCompactList}\small\item\em (W) (Bootloader) Transmit flash code for the bootloader to write to the application flash code space. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a611f34ebed0c586df3617a0973b22e2f}{A\+P\+P\+\_\+\+V\+E\+R\+I\+FY}}~0x\+F3,0
+\begin{DoxyCompactList}\small\item\em (W) (Bootloader) Starts the process of the bootloader checking though the application to make sure a full image is valid. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a78f8b1d1131b1aadce3cca30d1a2848d}{A\+P\+P\+\_\+\+S\+T\+A\+RT}}~0x\+F4,0
+\begin{DoxyCompactList}\small\item\em (W) (Bootloader) Application start. Used to transition the C\+C\+S811 state from boot to application mode, a write with no data is required. Before performing a write to A\+P\+P\+\_\+\+S\+T\+A\+RT the Status register should be accessed to check if there is a valid application present. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_a7a76670ff212ef11fb7daf1c9fd5836a}{S\+W\+\_\+\+R\+E\+S\+ET}}~0x\+F\+F,4
+\begin{DoxyCompactList}\small\item\em (W) (Bootloader) (Application) Software reset register. Write, 4 bytes \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{libccs811_8h_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+UG}}
+\item 
+\#define \mbox{\hyperlink{libccs811_8h_abee6cb23f0603daffdb48f08efc1648f}{P\+R\+I\+N\+T\+\_\+\+E\+R\+R\+O\+RS}}(x)
+\item 
+\#define \mbox{\hyperlink{libccs811_8h_a82e51e1bada275a9f9023c6f62975549}{print\+Errors}}(x)~print\+Errors(x)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{union_application_register}{Application\+Register}} \mbox{\hyperlink{libccs811_8h_af4955c494ac44a1fabf338bb0b310af0}{get\+App\+Register}} ()
+\item 
+void \mbox{\hyperlink{libccs811_8h_a1037ec08bbd5275f65eb684d8a02d69e}{connect\+C\+C\+S811}} (const char address)
+\item 
+void \mbox{\hyperlink{libccs811_8h_afb40b9602cbd2a44a275f171ad4bc128}{read\+Register}} (const char reg, int num\+Bytes)
+\item 
+void \mbox{\hyperlink{libccs811_8h_aa4bd518c31568be9291e6a78a8d7ccd0}{write\+Register}} (const char reg, const int num\+Bytes)
+\item 
+void \mbox{\hyperlink{libccs811_8h_a8d01f848cb6b94b268c5e6a0948fb821}{print\+Errors}} (char $\ast$message)
+\item 
+void \mbox{\hyperlink{libccs811_8h_a0a87823987286e3d8cc6b94ca68dcebf}{set\+Environment\+Data}} (float temperature, float humidity)
+\item 
+void \mbox{\hyperlink{libccs811_8h_ac269aead693f977edd3c2562ca02c8ee}{print\+Health\+E\+C\+O2}} (uint16\+\_\+t eco2)
+\item 
+void \mbox{\hyperlink{libccs811_8h_a5db4c1d456a40540d5f63dc600c27c66}{print\+Health\+V\+OC}} (uint16\+\_\+t tvoc)
+\item 
+void \mbox{\hyperlink{libccs811_8h_a4a0faf1122a3ea835f9fe3e7371b7613}{reset\+C\+C\+S811}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libccs811_8h_aa0bd01dfdc6b1a42f72793ab9d39879c}{available}} ()
+\item 
+void \mbox{\hyperlink{libccs811_8h_a743686a7f8c73933aa49668fd432ebb4}{print\+Status}} ()
+\item 
+void \mbox{\hyperlink{libccs811_8h_a5e60cb2e662309ab101ffc97b509523d}{clear\+App\+Reg}} ()
+\item 
+void \mbox{\hyperlink{libccs811_8h_aa9004a0567587ffca84ad248a712beb4}{print\+App\+Reg}} ()
+\item 
+void \mbox{\hyperlink{libccs811_8h_ae4a55fc763e769c416030d324f0bd636}{set\+Reset\+Pin}} (char pin)
+\item 
+void \mbox{\hyperlink{libccs811_8h_aa8b0aa7bac88cead99250731b017ebd7}{set\+Interrupt\+Pin}} (char pin)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{libccs811_8h_aa72e6d2ee674ef618564851cf64afe59}{M\+O\+D\+E0\+\_\+\+I\+D\+LE}} = 0b000
+\begin{DoxyCompactList}\small\item\em Measurements are disabled in this mode. \end{DoxyCompactList}\item 
+const uint8\+\_\+t \mbox{\hyperlink{libccs811_8h_a7ac226629ab047c51036c5715e241620}{M\+O\+D\+E1\+\_\+\+E\+A\+C\+H\+\_\+1S}} = 0b001
+\begin{DoxyCompactList}\small\item\em Constant power mode, I\+AQ measurement every second. \end{DoxyCompactList}\item 
+const uint8\+\_\+t \mbox{\hyperlink{libccs811_8h_a24dc6694faa62e1d3f8a2769b5f99aa8}{M\+O\+D\+E2\+\_\+\+E\+A\+C\+H\+\_\+10S}} = 0b010
+\begin{DoxyCompactList}\small\item\em Pulse heating mode I\+AQ measurement every 10 seconds. \end{DoxyCompactList}\item 
+const uint8\+\_\+t \mbox{\hyperlink{libccs811_8h_ad8f196a5af4def2b25cbd49fb2fecadf}{M\+O\+D\+E3\+\_\+\+E\+A\+C\+H\+\_\+60S}} = 0b011
+\begin{DoxyCompactList}\small\item\em Low power pulse heating mode I\+AQ measurement every 60 seconds. \end{DoxyCompactList}\item 
+const uint8\+\_\+t \mbox{\hyperlink{libccs811_8h_a937c6678687008a6292255a2539d5ae2}{M\+O\+D\+E4\+\_\+\+E\+A\+C\+H\+\_\+250\+MS}} = 0b100
+\begin{DoxyCompactList}\small\item\em In mode 4, the A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA is not updated, only R\+A\+W\+\_\+\+D\+A\+TA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{libccs811_8h_a38e7b83f124795805cc78f95034463e3}\label{libccs811_8h_a38e7b83f124795805cc78f95034463e3}} 
+\index{libccs811.\+h@{libccs811.\+h}!A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA@{A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA}}
+\index{A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA@{A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA}{ALG\_RESULT\_DATA}}
+{\footnotesize\ttfamily \#define A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA~0x02,8}
+
+
+
+(R) (Application) Algorythm result data register. Read, up to 8 bytes 
+
+\mbox{\Hypertarget{libccs811_8h_aa8c07c7ad943e86f3ab77a54634e984a}\label{libccs811_8h_aa8c07c7ad943e86f3ab77a54634e984a}} 
+\index{libccs811.\+h@{libccs811.\+h}!A\+P\+P\+\_\+\+D\+A\+TA@{A\+P\+P\+\_\+\+D\+A\+TA}}
+\index{A\+P\+P\+\_\+\+D\+A\+TA@{A\+P\+P\+\_\+\+D\+A\+TA}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{A\+P\+P\+\_\+\+D\+A\+TA}{APP\_DATA}}
+{\footnotesize\ttfamily \#define A\+P\+P\+\_\+\+D\+A\+TA~0x\+F2,9}
+
+
+
+(W) (Bootloader) Transmit flash code for the bootloader to write to the application flash code space. 
+
+\mbox{\Hypertarget{libccs811_8h_a2ffca08817d08a03c80d547bde271577}\label{libccs811_8h_a2ffca08817d08a03c80d547bde271577}} 
+\index{libccs811.\+h@{libccs811.\+h}!A\+P\+P\+\_\+\+E\+R\+A\+SE@{A\+P\+P\+\_\+\+E\+R\+A\+SE}}
+\index{A\+P\+P\+\_\+\+E\+R\+A\+SE@{A\+P\+P\+\_\+\+E\+R\+A\+SE}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{A\+P\+P\+\_\+\+E\+R\+A\+SE}{APP\_ERASE}}
+{\footnotesize\ttfamily \#define A\+P\+P\+\_\+\+E\+R\+A\+SE~0x\+F1,4}
+
+
+
+(W) (Bootloader) If the correct 4 bytes (0x\+E7 0x\+A7 0x\+E6 0x09) are written to this register in a single sequence the device will start the application erase 
+
+\mbox{\Hypertarget{libccs811_8h_a78f8b1d1131b1aadce3cca30d1a2848d}\label{libccs811_8h_a78f8b1d1131b1aadce3cca30d1a2848d}} 
+\index{libccs811.\+h@{libccs811.\+h}!A\+P\+P\+\_\+\+S\+T\+A\+RT@{A\+P\+P\+\_\+\+S\+T\+A\+RT}}
+\index{A\+P\+P\+\_\+\+S\+T\+A\+RT@{A\+P\+P\+\_\+\+S\+T\+A\+RT}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{A\+P\+P\+\_\+\+S\+T\+A\+RT}{APP\_START}}
+{\footnotesize\ttfamily \#define A\+P\+P\+\_\+\+S\+T\+A\+RT~0x\+F4,0}
+
+
+
+(W) (Bootloader) Application start. Used to transition the C\+C\+S811 state from boot to application mode, a write with no data is required. Before performing a write to A\+P\+P\+\_\+\+S\+T\+A\+RT the Status register should be accessed to check if there is a valid application present. 
+
+\mbox{\Hypertarget{libccs811_8h_a611f34ebed0c586df3617a0973b22e2f}\label{libccs811_8h_a611f34ebed0c586df3617a0973b22e2f}} 
+\index{libccs811.\+h@{libccs811.\+h}!A\+P\+P\+\_\+\+V\+E\+R\+I\+FY@{A\+P\+P\+\_\+\+V\+E\+R\+I\+FY}}
+\index{A\+P\+P\+\_\+\+V\+E\+R\+I\+FY@{A\+P\+P\+\_\+\+V\+E\+R\+I\+FY}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{A\+P\+P\+\_\+\+V\+E\+R\+I\+FY}{APP\_VERIFY}}
+{\footnotesize\ttfamily \#define A\+P\+P\+\_\+\+V\+E\+R\+I\+FY~0x\+F3,0}
+
+
+
+(W) (Bootloader) Starts the process of the bootloader checking though the application to make sure a full image is valid. 
+
+\mbox{\Hypertarget{libccs811_8h_a7f75e0f0b14506d1bb91cdcb6516daed}\label{libccs811_8h_a7f75e0f0b14506d1bb91cdcb6516daed}} 
+\index{libccs811.\+h@{libccs811.\+h}!B\+A\+S\+E\+L\+I\+NE@{B\+A\+S\+E\+L\+I\+NE}}
+\index{B\+A\+S\+E\+L\+I\+NE@{B\+A\+S\+E\+L\+I\+NE}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{B\+A\+S\+E\+L\+I\+NE}{BASELINE}}
+{\footnotesize\ttfamily \#define B\+A\+S\+E\+L\+I\+NE~0x11,2}
+
+
+
+(RW) (Application) Baseline register. Read/\+Write, 2 bytes 
+
+\mbox{\Hypertarget{libccs811_8h_ad8971d3db1c4e6708bece49e5d7556d9}\label{libccs811_8h_ad8971d3db1c4e6708bece49e5d7556d9}} 
+\index{libccs811.\+h@{libccs811.\+h}!C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH@{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH}}
+\index{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH@{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH}{CCS811\_ADDR\_HIGH}}
+{\footnotesize\ttfamily \#define C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH~0x5b}
+
+
+
+Pin Addr is high\+: sets address to 0x5b. 
+
+Linux Raspbian (Raspberry PI) Shared Library for A\+MS AG C\+C\+S811 -\/ Ultra-\/\+Low Power Digital Gas Sensor for Monitoring Indoor Air Quality
+
+\begin{DoxyAuthor}{Author}
+Alvaro Salazar \href{mailto:alvaro@denkitronik.com}{\tt alvaro@denkitronik.\+com} \href{http://www.denkitronik.com}{\tt http\+://www.\+denkitronik.\+com} 
+\end{DoxyAuthor}
+\mbox{\Hypertarget{libccs811_8h_a1cb736038ed2abd8773148262f737826}\label{libccs811_8h_a1cb736038ed2abd8773148262f737826}} 
+\index{libccs811.\+h@{libccs811.\+h}!C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+L\+OW@{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+L\+OW}}
+\index{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+L\+OW@{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+L\+OW}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+L\+OW}{CCS811\_ADDR\_LOW}}
+{\footnotesize\ttfamily \#define C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+L\+OW~0x5a}
+
+
+
+Pin Addr is low\+: sets address to 0x5a. 
+
+\mbox{\Hypertarget{libccs811_8h_ad72dbcf6d0153db1b8d8a58001feed83}\label{libccs811_8h_ad72dbcf6d0153db1b8d8a58001feed83}} 
+\index{libccs811.\+h@{libccs811.\+h}!D\+E\+B\+UG@{D\+E\+B\+UG}}
+\index{D\+E\+B\+UG@{D\+E\+B\+UG}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{D\+E\+B\+UG}{DEBUG}}
+{\footnotesize\ttfamily \#define D\+E\+B\+UG}
+
+\mbox{\Hypertarget{libccs811_8h_aa257017bfb68bba7c3a65506e31566e8}\label{libccs811_8h_aa257017bfb68bba7c3a65506e31566e8}} 
+\index{libccs811.\+h@{libccs811.\+h}!E\+N\+V\+\_\+\+D\+A\+TA@{E\+N\+V\+\_\+\+D\+A\+TA}}
+\index{E\+N\+V\+\_\+\+D\+A\+TA@{E\+N\+V\+\_\+\+D\+A\+TA}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{E\+N\+V\+\_\+\+D\+A\+TA}{ENV\_DATA}}
+{\footnotesize\ttfamily \#define E\+N\+V\+\_\+\+D\+A\+TA~0x05,4}
+
+
+
+(W) (Application) Environment data register. Write, 4 bytes 
+
+\mbox{\Hypertarget{libccs811_8h_a183bb51af7befc02499fab053242c8d9}\label{libccs811_8h_a183bb51af7befc02499fab053242c8d9}} 
+\index{libccs811.\+h@{libccs811.\+h}!E\+R\+R\+O\+R\+\_\+\+ID@{E\+R\+R\+O\+R\+\_\+\+ID}}
+\index{E\+R\+R\+O\+R\+\_\+\+ID@{E\+R\+R\+O\+R\+\_\+\+ID}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{E\+R\+R\+O\+R\+\_\+\+ID}{ERROR\_ID}}
+{\footnotesize\ttfamily \#define E\+R\+R\+O\+R\+\_\+\+ID~0x\+E0,1}
+
+
+
+(R) (Bootloader) (Application) Error Id register. Read, 1 byte 
+
+\mbox{\Hypertarget{libccs811_8h_a46c9bbbbc9a91343d1c7aaf0af33766b}\label{libccs811_8h_a46c9bbbbc9a91343d1c7aaf0af33766b}} 
+\index{libccs811.\+h@{libccs811.\+h}!F\+W\+\_\+\+A\+P\+P\+\_\+\+V\+E\+R\+S\+I\+ON@{F\+W\+\_\+\+A\+P\+P\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{F\+W\+\_\+\+A\+P\+P\+\_\+\+V\+E\+R\+S\+I\+ON@{F\+W\+\_\+\+A\+P\+P\+\_\+\+V\+E\+R\+S\+I\+ON}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{F\+W\+\_\+\+A\+P\+P\+\_\+\+V\+E\+R\+S\+I\+ON}{FW\_APP\_VERSION}}
+{\footnotesize\ttfamily \#define F\+W\+\_\+\+A\+P\+P\+\_\+\+V\+E\+R\+S\+I\+ON~0x24,2}
+
+
+
+(R) (Bootloader) (Application) Firmware application version register. Read, 2 bytes 
+
+\mbox{\Hypertarget{libccs811_8h_a0b1352327b4036dfddd632a9a589f91c}\label{libccs811_8h_a0b1352327b4036dfddd632a9a589f91c}} 
+\index{libccs811.\+h@{libccs811.\+h}!F\+W\+\_\+\+B\+O\+O\+T\+\_\+\+V\+E\+R\+S\+I\+ON@{F\+W\+\_\+\+B\+O\+O\+T\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{F\+W\+\_\+\+B\+O\+O\+T\+\_\+\+V\+E\+R\+S\+I\+ON@{F\+W\+\_\+\+B\+O\+O\+T\+\_\+\+V\+E\+R\+S\+I\+ON}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{F\+W\+\_\+\+B\+O\+O\+T\+\_\+\+V\+E\+R\+S\+I\+ON}{FW\_BOOT\_VERSION}}
+{\footnotesize\ttfamily \#define F\+W\+\_\+\+B\+O\+O\+T\+\_\+\+V\+E\+R\+S\+I\+ON~0x23,2}
+
+
+
+(R) (Bootloader) (Application) Firmware boot version register. Read, 2 bytes 
+
+\mbox{\Hypertarget{libccs811_8h_a3c6656f855f36c041117c94ba1106520}\label{libccs811_8h_a3c6656f855f36c041117c94ba1106520}} 
+\index{libccs811.\+h@{libccs811.\+h}!H\+W\+\_\+\+ID@{H\+W\+\_\+\+ID}}
+\index{H\+W\+\_\+\+ID@{H\+W\+\_\+\+ID}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{H\+W\+\_\+\+ID}{HW\_ID}}
+{\footnotesize\ttfamily \#define H\+W\+\_\+\+ID~0x20,1}
+
+
+
+(R) (Bootloader) (Application) Hardware id register. Read, 1 byte 
+
+\mbox{\Hypertarget{libccs811_8h_ac74274f3d1cd03778e223a3bedb3a13a}\label{libccs811_8h_ac74274f3d1cd03778e223a3bedb3a13a}} 
+\index{libccs811.\+h@{libccs811.\+h}!H\+W\+\_\+\+V\+E\+R\+S\+I\+ON@{H\+W\+\_\+\+V\+E\+R\+S\+I\+ON}}
+\index{H\+W\+\_\+\+V\+E\+R\+S\+I\+ON@{H\+W\+\_\+\+V\+E\+R\+S\+I\+ON}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{H\+W\+\_\+\+V\+E\+R\+S\+I\+ON}{HW\_VERSION}}
+{\footnotesize\ttfamily \#define H\+W\+\_\+\+V\+E\+R\+S\+I\+ON~0x21,1}
+
+
+
+(R) (Bootloader) (Application) Hardware version register. Read, 1 byte 
+
+\mbox{\Hypertarget{libccs811_8h_a9ddb3f559caa38b86fcc504180435b33}\label{libccs811_8h_a9ddb3f559caa38b86fcc504180435b33}} 
+\index{libccs811.\+h@{libccs811.\+h}!I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+A\+TE@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+A\+TE}}
+\index{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+A\+TE@{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+A\+TE}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+A\+TE}{INTERNAL\_STATE}}
+{\footnotesize\ttfamily \#define I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+A\+TE~0x\+A0,1}
+
+
+
+(R) (Application) Internal Status register (No documentation available for this register). Read, 1 byte 
+
+\mbox{\Hypertarget{libccs811_8h_a5ba2b12135a7a55535ff651458ed0353}\label{libccs811_8h_a5ba2b12135a7a55535ff651458ed0353}} 
+\index{libccs811.\+h@{libccs811.\+h}!M\+E\+A\+S\+\_\+\+M\+O\+DE@{M\+E\+A\+S\+\_\+\+M\+O\+DE}}
+\index{M\+E\+A\+S\+\_\+\+M\+O\+DE@{M\+E\+A\+S\+\_\+\+M\+O\+DE}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{M\+E\+A\+S\+\_\+\+M\+O\+DE}{MEAS\_MODE}}
+{\footnotesize\ttfamily \#define M\+E\+A\+S\+\_\+\+M\+O\+DE~0x01,1}
+
+
+
+(RW) (Application) meas\+\_\+mode register, Read/\+Write 1 byte 
+
+\mbox{\Hypertarget{libccs811_8h_a2df8ccf86808a610221d62f6609dc964}\label{libccs811_8h_a2df8ccf86808a610221d62f6609dc964}} 
+\index{libccs811.\+h@{libccs811.\+h}!N\+TC@{N\+TC}}
+\index{N\+TC@{N\+TC}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{N\+TC}{NTC}}
+{\footnotesize\ttfamily \#define N\+TC~0x06,4}
+
+
+
+(R) (Application) (Old V1.\+0 Only) N\+TC sensor register. Read, 4 bytes 
+
+\mbox{\Hypertarget{libccs811_8h_abee6cb23f0603daffdb48f08efc1648f}\label{libccs811_8h_abee6cb23f0603daffdb48f08efc1648f}} 
+\index{libccs811.\+h@{libccs811.\+h}!P\+R\+I\+N\+T\+\_\+\+E\+R\+R\+O\+RS@{P\+R\+I\+N\+T\+\_\+\+E\+R\+R\+O\+RS}}
+\index{P\+R\+I\+N\+T\+\_\+\+E\+R\+R\+O\+RS@{P\+R\+I\+N\+T\+\_\+\+E\+R\+R\+O\+RS}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{P\+R\+I\+N\+T\+\_\+\+E\+R\+R\+O\+RS}{PRINT\_ERRORS}}
+{\footnotesize\ttfamily \#define P\+R\+I\+N\+T\+\_\+\+E\+R\+R\+O\+RS(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{libccs811_8h_a82e51e1bada275a9f9023c6f62975549}\label{libccs811_8h_a82e51e1bada275a9f9023c6f62975549}} 
+\index{libccs811.\+h@{libccs811.\+h}!print\+Errors@{print\+Errors}}
+\index{print\+Errors@{print\+Errors}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{print\+Errors}{printErrors}}
+{\footnotesize\ttfamily \#define print\+Errors(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~print\+Errors(x)}
+
+\mbox{\Hypertarget{libccs811_8h_a7140d943b6f40ad3c4bdab5a2073c2f6}\label{libccs811_8h_a7140d943b6f40ad3c4bdab5a2073c2f6}} 
+\index{libccs811.\+h@{libccs811.\+h}!R\+A\+W\+\_\+\+D\+A\+TA@{R\+A\+W\+\_\+\+D\+A\+TA}}
+\index{R\+A\+W\+\_\+\+D\+A\+TA@{R\+A\+W\+\_\+\+D\+A\+TA}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{R\+A\+W\+\_\+\+D\+A\+TA}{RAW\_DATA}}
+{\footnotesize\ttfamily \#define R\+A\+W\+\_\+\+D\+A\+TA~0x03,2}
+
+
+
+(R) (Application) Raw data register. Read, 2 bytes 
+
+\mbox{\Hypertarget{libccs811_8h_a59279bee44f34d08b3cbf3a89fb0d8d9}\label{libccs811_8h_a59279bee44f34d08b3cbf3a89fb0d8d9}} 
+\index{libccs811.\+h@{libccs811.\+h}!S\+T\+A\+T\+US@{S\+T\+A\+T\+US}}
+\index{S\+T\+A\+T\+US@{S\+T\+A\+T\+US}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{S\+T\+A\+T\+US}{STATUS}}
+{\footnotesize\ttfamily \#define S\+T\+A\+T\+US~0x00,1}
+
+
+
+(R) (Bootloader) (Application) Status register. Read only, 1 byte 
+
+\mbox{\Hypertarget{libccs811_8h_a7a76670ff212ef11fb7daf1c9fd5836a}\label{libccs811_8h_a7a76670ff212ef11fb7daf1c9fd5836a}} 
+\index{libccs811.\+h@{libccs811.\+h}!S\+W\+\_\+\+R\+E\+S\+ET@{S\+W\+\_\+\+R\+E\+S\+ET}}
+\index{S\+W\+\_\+\+R\+E\+S\+ET@{S\+W\+\_\+\+R\+E\+S\+ET}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{S\+W\+\_\+\+R\+E\+S\+ET}{SW\_RESET}}
+{\footnotesize\ttfamily \#define S\+W\+\_\+\+R\+E\+S\+ET~0x\+F\+F,4}
+
+
+
+(W) (Bootloader) (Application) Software reset register. Write, 4 bytes 
+
+\mbox{\Hypertarget{libccs811_8h_a9f4c33398c548b397597c914cf8b536e}\label{libccs811_8h_a9f4c33398c548b397597c914cf8b536e}} 
+\index{libccs811.\+h@{libccs811.\+h}!T\+H\+R\+E\+S\+H\+O\+L\+DS@{T\+H\+R\+E\+S\+H\+O\+L\+DS}}
+\index{T\+H\+R\+E\+S\+H\+O\+L\+DS@{T\+H\+R\+E\+S\+H\+O\+L\+DS}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{T\+H\+R\+E\+S\+H\+O\+L\+DS}{THRESHOLDS}}
+{\footnotesize\ttfamily \#define T\+H\+R\+E\+S\+H\+O\+L\+DS~0x10,4}
+
+
+
+(W) (Application) Thresholds register. Write, 4 bytes 
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libccs811_8h_aa0bd01dfdc6b1a42f72793ab9d39879c}\label{libccs811_8h_aa0bd01dfdc6b1a42f72793ab9d39879c}} 
+\index{libccs811.\+h@{libccs811.\+h}!available@{available}}
+\index{available@{available}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{available()}{available()}}
+{\footnotesize\ttfamily uint8\+\_\+t available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if there is a data available \begin{DoxyReturn}{Returns}
+State of the interrupt pin settled with \mbox{\hyperlink{libccs811_8c_aa8b0aa7bac88cead99250731b017ebd7}{set\+Interrupt\+Pin()}} function 
+\end{DoxyReturn}
+\mbox{\Hypertarget{libccs811_8h_a5e60cb2e662309ab101ffc97b509523d}\label{libccs811_8h_a5e60cb2e662309ab101ffc97b509523d}} 
+\index{libccs811.\+h@{libccs811.\+h}!clear\+App\+Reg@{clear\+App\+Reg}}
+\index{clear\+App\+Reg@{clear\+App\+Reg}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{clear\+App\+Reg()}{clearAppReg()}}
+{\footnotesize\ttfamily void clear\+App\+Reg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear the current Application Registers \mbox{\Hypertarget{libccs811_8h_a1037ec08bbd5275f65eb684d8a02d69e}\label{libccs811_8h_a1037ec08bbd5275f65eb684d8a02d69e}} 
+\index{libccs811.\+h@{libccs811.\+h}!connect\+C\+C\+S811@{connect\+C\+C\+S811}}
+\index{connect\+C\+C\+S811@{connect\+C\+C\+S811}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{connect\+C\+C\+S811()}{connectCCS811()}}
+{\footnotesize\ttfamily void connect\+C\+C\+S811 (\begin{DoxyParamCaption}\item[{const char}]{address }\end{DoxyParamCaption})}
+
+Connect to the C\+C\+S811 plugged in the I2C bus with the specified address 
+\begin{DoxyParams}{Parameters}
+{\em address} & Address of the C\+C\+S811.~\newline
+ Only two valid address\+: C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH and C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+L\+OW \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8h_af4955c494ac44a1fabf338bb0b310af0}\label{libccs811_8h_af4955c494ac44a1fabf338bb0b310af0}} 
+\index{libccs811.\+h@{libccs811.\+h}!get\+App\+Register@{get\+App\+Register}}
+\index{get\+App\+Register@{get\+App\+Register}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{get\+App\+Register()}{getAppRegister()}}
+{\footnotesize\ttfamily union \mbox{\hyperlink{union_application_register}{Application\+Register}} get\+App\+Register (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the current application register of the C\+C\+S811. ~\newline
+ It is no valid until \mbox{\hyperlink{libccs811_8c_afb40b9602cbd2a44a275f171ad4bc128}{read\+Register()}} be called. \begin{DoxyReturn}{Returns}
+The current application register 
+\end{DoxyReturn}
+\mbox{\Hypertarget{libccs811_8h_aa9004a0567587ffca84ad248a712beb4}\label{libccs811_8h_aa9004a0567587ffca84ad248a712beb4}} 
+\index{libccs811.\+h@{libccs811.\+h}!print\+App\+Reg@{print\+App\+Reg}}
+\index{print\+App\+Reg@{print\+App\+Reg}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{print\+App\+Reg()}{printAppReg()}}
+{\footnotesize\ttfamily void print\+App\+Reg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints the current Application Register \mbox{\Hypertarget{libccs811_8h_a8d01f848cb6b94b268c5e6a0948fb821}\label{libccs811_8h_a8d01f848cb6b94b268c5e6a0948fb821}} 
+\index{libccs811.\+h@{libccs811.\+h}!print\+Errors@{print\+Errors}}
+\index{print\+Errors@{print\+Errors}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{print\+Errors()}{printErrors()}}
+{\footnotesize\ttfamily void print\+Errors (\begin{DoxyParamCaption}\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Prints to stdout the state of errors 
+\begin{DoxyParams}{Parameters}
+{\em message} & Title of the printing in the stdout \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8h_ac269aead693f977edd3c2562ca02c8ee}\label{libccs811_8h_ac269aead693f977edd3c2562ca02c8ee}} 
+\index{libccs811.\+h@{libccs811.\+h}!print\+Health\+E\+C\+O2@{print\+Health\+E\+C\+O2}}
+\index{print\+Health\+E\+C\+O2@{print\+Health\+E\+C\+O2}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{print\+Health\+E\+C\+O2()}{printHealthECO2()}}
+{\footnotesize\ttfamily void print\+Health\+E\+C\+O2 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{eco2 }\end{DoxyParamCaption})}
+
+Prints information about the impact of the e\+C\+O2 in the human health.~\newline
+ Messages taken from\+: \href{https://www.kane.co.uk/knowledge-centre/what-are-safe-levels-of-co-and-co2-in-rooms}{\tt https\+://www.\+kane.\+co.\+uk/knowledge-\/centre/what-\/are-\/safe-\/levels-\/of-\/co-\/and-\/co2-\/in-\/rooms} 
+\begin{DoxyParams}{Parameters}
+{\em eco2} & Level of the e\+C\+O2 in ppm \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8h_a5db4c1d456a40540d5f63dc600c27c66}\label{libccs811_8h_a5db4c1d456a40540d5f63dc600c27c66}} 
+\index{libccs811.\+h@{libccs811.\+h}!print\+Health\+V\+OC@{print\+Health\+V\+OC}}
+\index{print\+Health\+V\+OC@{print\+Health\+V\+OC}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{print\+Health\+V\+O\+C()}{printHealthVOC()}}
+{\footnotesize\ttfamily void print\+Health\+V\+OC (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{tvoc }\end{DoxyParamCaption})}
+
+Prints information about the impact of the e\+T\+V\+OC in the human health. Taken of T\+V\+OC guidelines issued by the German Federal Environmental Agency 
+\begin{DoxyParams}{Parameters}
+{\em tvoc} & Level of the e\+T\+V\+OC in ppm \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8h_a743686a7f8c73933aa49668fd432ebb4}\label{libccs811_8h_a743686a7f8c73933aa49668fd432ebb4}} 
+\index{libccs811.\+h@{libccs811.\+h}!print\+Status@{print\+Status}}
+\index{print\+Status@{print\+Status}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{print\+Status()}{printStatus()}}
+{\footnotesize\ttfamily void print\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints the status register \mbox{\Hypertarget{libccs811_8h_afb40b9602cbd2a44a275f171ad4bc128}\label{libccs811_8h_afb40b9602cbd2a44a275f171ad4bc128}} 
+\index{libccs811.\+h@{libccs811.\+h}!read\+Register@{read\+Register}}
+\index{read\+Register@{read\+Register}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{read\+Register()}{readRegister()}}
+{\footnotesize\ttfamily void read\+Register (\begin{DoxyParamCaption}\item[{const char}]{reg,  }\item[{int}]{num\+Bytes }\end{DoxyParamCaption})}
+
+Read a number of bytes of the register specified. Use it in this way (example)\+: read\+Register(\+S\+T\+A\+T\+U\+S) ~\newline
+ Valid values are (these constants contains reg and num\+Bytes)\+: S\+T\+A\+T\+US M\+E\+A\+S\+\_\+\+M\+O\+DE A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA R\+A\+W\+\_\+\+D\+A\+TA E\+N\+V\+\_\+\+D\+A\+TA N\+TC T\+H\+R\+E\+S\+H\+O\+L\+DS B\+A\+S\+E\+L\+I\+NE H\+W\+\_\+\+ID H\+W\+\_\+\+V\+E\+R\+S\+I\+ON F\+W\+\_\+\+B\+O\+O\+T\+\_\+\+V\+E\+R\+S\+I\+ON F\+W\+\_\+\+A\+P\+P\+\_\+\+V\+E\+R\+S\+I\+ON I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+A\+TE E\+R\+R\+O\+R\+\_\+\+ID A\+P\+P\+\_\+\+E\+R\+A\+SE A\+P\+P\+\_\+\+D\+A\+TA A\+P\+P\+\_\+\+V\+E\+R\+I\+FY A\+P\+P\+\_\+\+S\+T\+A\+RT S\+W\+\_\+\+R\+E\+S\+ET 
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register to be read. \\
+\hline
+{\em num\+Bytes} & Number of bytes to be read from the register. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8h_a4a0faf1122a3ea835f9fe3e7371b7613}\label{libccs811_8h_a4a0faf1122a3ea835f9fe3e7371b7613}} 
+\index{libccs811.\+h@{libccs811.\+h}!reset\+C\+C\+S811@{reset\+C\+C\+S811}}
+\index{reset\+C\+C\+S811@{reset\+C\+C\+S811}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{reset\+C\+C\+S811()}{resetCCS811()}}
+{\footnotesize\ttfamily void reset\+C\+C\+S811 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets the C\+C\+S811 using the specified pin in \mbox{\hyperlink{libccs811_8c_ae4a55fc763e769c416030d324f0bd636}{set\+Reset\+Pin()}} function \mbox{\Hypertarget{libccs811_8h_a0a87823987286e3d8cc6b94ca68dcebf}\label{libccs811_8h_a0a87823987286e3d8cc6b94ca68dcebf}} 
+\index{libccs811.\+h@{libccs811.\+h}!set\+Environment\+Data@{set\+Environment\+Data}}
+\index{set\+Environment\+Data@{set\+Environment\+Data}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{set\+Environment\+Data()}{setEnvironmentData()}}
+{\footnotesize\ttfamily void set\+Environment\+Data (\begin{DoxyParamCaption}\item[{float}]{temperature,  }\item[{float}]{humidity }\end{DoxyParamCaption})}
+
+Specify enviroment data to adjust the measurement of e\+C\+O2 and e\+T\+V\+OC levels 
+\begin{DoxyParams}{Parameters}
+{\em temperature} & Environment\textquotesingle{}s temperature in degree celsius \\
+\hline
+{\em humidity} & Environment\textquotesingle{}s humidity in \% Relative Humidity \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8h_aa8b0aa7bac88cead99250731b017ebd7}\label{libccs811_8h_aa8b0aa7bac88cead99250731b017ebd7}} 
+\index{libccs811.\+h@{libccs811.\+h}!set\+Interrupt\+Pin@{set\+Interrupt\+Pin}}
+\index{set\+Interrupt\+Pin@{set\+Interrupt\+Pin}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{set\+Interrupt\+Pin()}{setInterruptPin()}}
+{\footnotesize\ttfamily void set\+Interrupt\+Pin (\begin{DoxyParamCaption}\item[{char}]{pin }\end{DoxyParamCaption})}
+
+Set the Interrupt pin in the Raspberry PI (use wiringpi pinout) 
+\begin{DoxyParams}{Parameters}
+{\em pin} & Wiring\+Pi pin number where the interrupt pin is connected \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8h_ae4a55fc763e769c416030d324f0bd636}\label{libccs811_8h_ae4a55fc763e769c416030d324f0bd636}} 
+\index{libccs811.\+h@{libccs811.\+h}!set\+Reset\+Pin@{set\+Reset\+Pin}}
+\index{set\+Reset\+Pin@{set\+Reset\+Pin}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{set\+Reset\+Pin()}{setResetPin()}}
+{\footnotesize\ttfamily void set\+Reset\+Pin (\begin{DoxyParamCaption}\item[{char}]{pin }\end{DoxyParamCaption})}
+
+Set the Reset pin in the Raspberry PI (use wiringpi pinout) 
+\begin{DoxyParams}{Parameters}
+{\em pin} & number wiringpi style where the reset pin is connected \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8h_aa4bd518c31568be9291e6a78a8d7ccd0}\label{libccs811_8h_aa4bd518c31568be9291e6a78a8d7ccd0}} 
+\index{libccs811.\+h@{libccs811.\+h}!write\+Register@{write\+Register}}
+\index{write\+Register@{write\+Register}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{write\+Register()}{writeRegister()}}
+{\footnotesize\ttfamily void write\+Register (\begin{DoxyParamCaption}\item[{const char}]{reg,  }\item[{const int}]{num\+Bytes }\end{DoxyParamCaption})}
+
+Write app\+Reg in the specified register 
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register to be written \\
+\hline
+{\em num\+Bytes} & Number of bytes to be written \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{libccs811_8h_aa72e6d2ee674ef618564851cf64afe59}\label{libccs811_8h_aa72e6d2ee674ef618564851cf64afe59}} 
+\index{libccs811.\+h@{libccs811.\+h}!M\+O\+D\+E0\+\_\+\+I\+D\+LE@{M\+O\+D\+E0\+\_\+\+I\+D\+LE}}
+\index{M\+O\+D\+E0\+\_\+\+I\+D\+LE@{M\+O\+D\+E0\+\_\+\+I\+D\+LE}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E0\+\_\+\+I\+D\+LE}{MODE0\_IDLE}}
+{\footnotesize\ttfamily const uint8\+\_\+t M\+O\+D\+E0\+\_\+\+I\+D\+LE = 0b000}
+
+
+
+Measurements are disabled in this mode. 
+
+\mbox{\Hypertarget{libccs811_8h_a7ac226629ab047c51036c5715e241620}\label{libccs811_8h_a7ac226629ab047c51036c5715e241620}} 
+\index{libccs811.\+h@{libccs811.\+h}!M\+O\+D\+E1\+\_\+\+E\+A\+C\+H\+\_\+1S@{M\+O\+D\+E1\+\_\+\+E\+A\+C\+H\+\_\+1S}}
+\index{M\+O\+D\+E1\+\_\+\+E\+A\+C\+H\+\_\+1S@{M\+O\+D\+E1\+\_\+\+E\+A\+C\+H\+\_\+1S}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E1\+\_\+\+E\+A\+C\+H\+\_\+1S}{MODE1\_EACH\_1S}}
+{\footnotesize\ttfamily const uint8\+\_\+t M\+O\+D\+E1\+\_\+\+E\+A\+C\+H\+\_\+1S = 0b001}
+
+
+
+Constant power mode, I\+AQ measurement every second. 
+
+\mbox{\Hypertarget{libccs811_8h_a24dc6694faa62e1d3f8a2769b5f99aa8}\label{libccs811_8h_a24dc6694faa62e1d3f8a2769b5f99aa8}} 
+\index{libccs811.\+h@{libccs811.\+h}!M\+O\+D\+E2\+\_\+\+E\+A\+C\+H\+\_\+10S@{M\+O\+D\+E2\+\_\+\+E\+A\+C\+H\+\_\+10S}}
+\index{M\+O\+D\+E2\+\_\+\+E\+A\+C\+H\+\_\+10S@{M\+O\+D\+E2\+\_\+\+E\+A\+C\+H\+\_\+10S}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E2\+\_\+\+E\+A\+C\+H\+\_\+10S}{MODE2\_EACH\_10S}}
+{\footnotesize\ttfamily const uint8\+\_\+t M\+O\+D\+E2\+\_\+\+E\+A\+C\+H\+\_\+10S = 0b010}
+
+
+
+Pulse heating mode I\+AQ measurement every 10 seconds. 
+
+\mbox{\Hypertarget{libccs811_8h_ad8f196a5af4def2b25cbd49fb2fecadf}\label{libccs811_8h_ad8f196a5af4def2b25cbd49fb2fecadf}} 
+\index{libccs811.\+h@{libccs811.\+h}!M\+O\+D\+E3\+\_\+\+E\+A\+C\+H\+\_\+60S@{M\+O\+D\+E3\+\_\+\+E\+A\+C\+H\+\_\+60S}}
+\index{M\+O\+D\+E3\+\_\+\+E\+A\+C\+H\+\_\+60S@{M\+O\+D\+E3\+\_\+\+E\+A\+C\+H\+\_\+60S}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E3\+\_\+\+E\+A\+C\+H\+\_\+60S}{MODE3\_EACH\_60S}}
+{\footnotesize\ttfamily const uint8\+\_\+t M\+O\+D\+E3\+\_\+\+E\+A\+C\+H\+\_\+60S = 0b011}
+
+
+
+Low power pulse heating mode I\+AQ measurement every 60 seconds. 
+
+\mbox{\Hypertarget{libccs811_8h_a937c6678687008a6292255a2539d5ae2}\label{libccs811_8h_a937c6678687008a6292255a2539d5ae2}} 
+\index{libccs811.\+h@{libccs811.\+h}!M\+O\+D\+E4\+\_\+\+E\+A\+C\+H\+\_\+250\+MS@{M\+O\+D\+E4\+\_\+\+E\+A\+C\+H\+\_\+250\+MS}}
+\index{M\+O\+D\+E4\+\_\+\+E\+A\+C\+H\+\_\+250\+MS@{M\+O\+D\+E4\+\_\+\+E\+A\+C\+H\+\_\+250\+MS}!libccs811.\+h@{libccs811.\+h}}
+\subsubsection{\texorpdfstring{M\+O\+D\+E4\+\_\+\+E\+A\+C\+H\+\_\+250\+MS}{MODE4\_EACH\_250MS}}
+{\footnotesize\ttfamily const uint8\+\_\+t M\+O\+D\+E4\+\_\+\+E\+A\+C\+H\+\_\+250\+MS = 0b100}
+
+
+
+In mode 4, the A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA is not updated, only R\+A\+W\+\_\+\+D\+A\+TA. 
+

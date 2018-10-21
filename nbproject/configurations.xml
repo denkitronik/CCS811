@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>libccs811.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>libccs811.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>CODE_OF_CONDUCT.md</itemPath>
+      <itemPath>Doxyfile</itemPath>
+      <itemPath>LICENSE.md</itemPath>
+      <itemPath>Makefile</itemPath>
+      <itemPath>README.md</itemPath>
+      <itemPath>docs/header.tex</itemPath>
+      <itemPath>keywords.txt</itemPath>
+      <itemPath>library.json</itemPath>
+      <itemPath>library.properties</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <commandLine>-I/usr/include/glib-2.0 -I/usr/include/glib-2.0/glib -I/usr/lib/arm-linux-gnueabihf/glib-2.0/include -lglib-2.0 -lwiringPi</commandLine>
+        </cTool>
+        <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libccs811.${CND_DLIB_EXT}</output>
+        </linkerTool>
+      </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/libccs811.so.tar</output>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+      <item path="libccs811.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="libccs811.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="libccs811.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="libccs811.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

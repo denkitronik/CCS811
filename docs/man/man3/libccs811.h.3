@@ -1,0 +1,436 @@
+.TH "libccs811.h" 3 "Sat Oct 20 2018" "Version 1.0.0" "libccs811" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+libccs811.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdint\&.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "union \fBApplicationRegister\fP"
+.br
+.RI "Data Result Register\&. "
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCCS811_ADDR_HIGH\fP   0x5b"
+.br
+.RI "Pin Addr is high: sets address to 0x5b\&. "
+.ti -1c
+.RI "#define \fBCCS811_ADDR_LOW\fP   0x5a"
+.br
+.RI "Pin Addr is low: sets address to 0x5a\&. "
+.ti -1c
+.RI "#define \fBSTATUS\fP   0x00,1"
+.br
+.RI "(R) (Bootloader) (Application) Status register\&. Read only, 1 byte "
+.ti -1c
+.RI "#define \fBMEAS_MODE\fP   0x01,1"
+.br
+.RI "(RW) (Application) meas_mode register, Read/Write 1 byte "
+.ti -1c
+.RI "#define \fBALG_RESULT_DATA\fP   0x02,8"
+.br
+.RI "(R) (Application) Algorythm result data register\&. Read, up to 8 bytes "
+.ti -1c
+.RI "#define \fBRAW_DATA\fP   0x03,2"
+.br
+.RI "(R) (Application) Raw data register\&. Read, 2 bytes "
+.ti -1c
+.RI "#define \fBENV_DATA\fP   0x05,4"
+.br
+.RI "(W) (Application) Environment data register\&. Write, 4 bytes "
+.ti -1c
+.RI "#define \fBNTC\fP   0x06,4"
+.br
+.RI "(R) (Application) (Old V1\&.0 Only) NTC sensor register\&. Read, 4 bytes "
+.ti -1c
+.RI "#define \fBTHRESHOLDS\fP   0x10,4"
+.br
+.RI "(W) (Application) Thresholds register\&. Write, 4 bytes "
+.ti -1c
+.RI "#define \fBBASELINE\fP   0x11,2"
+.br
+.RI "(RW) (Application) Baseline register\&. Read/Write, 2 bytes "
+.ti -1c
+.RI "#define \fBHW_ID\fP   0x20,1"
+.br
+.RI "(R) (Bootloader) (Application) Hardware id register\&. Read, 1 byte "
+.ti -1c
+.RI "#define \fBHW_VERSION\fP   0x21,1"
+.br
+.RI "(R) (Bootloader) (Application) Hardware version register\&. Read, 1 byte "
+.ti -1c
+.RI "#define \fBFW_BOOT_VERSION\fP   0x23,2"
+.br
+.RI "(R) (Bootloader) (Application) Firmware boot version register\&. Read, 2 bytes "
+.ti -1c
+.RI "#define \fBFW_APP_VERSION\fP   0x24,2"
+.br
+.RI "(R) (Bootloader) (Application) Firmware application version register\&. Read, 2 bytes "
+.ti -1c
+.RI "#define \fBINTERNAL_STATE\fP   0xA0,1"
+.br
+.RI "(R) (Application) Internal Status register (No documentation available for this register)\&. Read, 1 byte "
+.ti -1c
+.RI "#define \fBERROR_ID\fP   0xE0,1"
+.br
+.RI "(R) (Bootloader) (Application) Error Id register\&. Read, 1 byte "
+.ti -1c
+.RI "#define \fBAPP_ERASE\fP   0xF1,4"
+.br
+.RI "(W) (Bootloader) If the correct 4 bytes (0xE7 0xA7 0xE6 0x09) are written to this register in a single sequence the device will start the application erase "
+.ti -1c
+.RI "#define \fBAPP_DATA\fP   0xF2,9"
+.br
+.RI "(W) (Bootloader) Transmit flash code for the bootloader to write to the application flash code space\&. "
+.ti -1c
+.RI "#define \fBAPP_VERIFY\fP   0xF3,0"
+.br
+.RI "(W) (Bootloader) Starts the process of the bootloader checking though the application to make sure a full image is valid\&. "
+.ti -1c
+.RI "#define \fBAPP_START\fP   0xF4,0"
+.br
+.RI "(W) (Bootloader) Application start\&. Used to transition the CCS811 state from boot to application mode, a write with no data is required\&. Before performing a write to APP_START the Status register should be accessed to check if there is a valid application present\&. "
+.ti -1c
+.RI "#define \fBSW_RESET\fP   0xFF,4"
+.br
+.RI "(W) (Bootloader) (Application) Software reset register\&. Write, 4 bytes "
+.ti -1c
+.RI "#define \fBDEBUG\fP"
+.br
+.ti -1c
+.RI "#define \fBPRINT_ERRORS\fP(x)"
+.br
+.ti -1c
+.RI "#define \fBprintErrors\fP(x)   printErrors(x)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "union \fBApplicationRegister\fP \fBgetAppRegister\fP ()"
+.br
+.ti -1c
+.RI "void \fBconnectCCS811\fP (const char address)"
+.br
+.ti -1c
+.RI "void \fBreadRegister\fP (const char reg, int numBytes)"
+.br
+.ti -1c
+.RI "void \fBwriteRegister\fP (const char reg, const int numBytes)"
+.br
+.ti -1c
+.RI "void \fBprintErrors\fP (char *message)"
+.br
+.ti -1c
+.RI "void \fBsetEnvironmentData\fP (float temperature, float humidity)"
+.br
+.ti -1c
+.RI "void \fBprintHealthECO2\fP (uint16_t eco2)"
+.br
+.ti -1c
+.RI "void \fBprintHealthVOC\fP (uint16_t tvoc)"
+.br
+.ti -1c
+.RI "void \fBresetCCS811\fP ()"
+.br
+.ti -1c
+.RI "uint8_t \fBavailable\fP ()"
+.br
+.ti -1c
+.RI "void \fBprintStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBclearAppReg\fP ()"
+.br
+.ti -1c
+.RI "void \fBprintAppReg\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetResetPin\fP (char pin)"
+.br
+.ti -1c
+.RI "void \fBsetInterruptPin\fP (char pin)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const uint8_t \fBMODE0_IDLE\fP = 0b000"
+.br
+.RI "Measurements are disabled in this mode\&. "
+.ti -1c
+.RI "const uint8_t \fBMODE1_EACH_1S\fP = 0b001"
+.br
+.RI "Constant power mode, IAQ measurement every second\&. "
+.ti -1c
+.RI "const uint8_t \fBMODE2_EACH_10S\fP = 0b010"
+.br
+.RI "Pulse heating mode IAQ measurement every 10 seconds\&. "
+.ti -1c
+.RI "const uint8_t \fBMODE3_EACH_60S\fP = 0b011"
+.br
+.RI "Low power pulse heating mode IAQ measurement every 60 seconds\&. "
+.ti -1c
+.RI "const uint8_t \fBMODE4_EACH_250MS\fP = 0b100"
+.br
+.RI "In mode 4, the ALG_RESULT_DATA is not updated, only RAW_DATA\&. "
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ALG_RESULT_DATA   0x02,8"
+
+.PP
+(R) (Application) Algorythm result data register\&. Read, up to 8 bytes 
+.SS "#define APP_DATA   0xF2,9"
+
+.PP
+(W) (Bootloader) Transmit flash code for the bootloader to write to the application flash code space\&. 
+.SS "#define APP_ERASE   0xF1,4"
+
+.PP
+(W) (Bootloader) If the correct 4 bytes (0xE7 0xA7 0xE6 0x09) are written to this register in a single sequence the device will start the application erase 
+.SS "#define APP_START   0xF4,0"
+
+.PP
+(W) (Bootloader) Application start\&. Used to transition the CCS811 state from boot to application mode, a write with no data is required\&. Before performing a write to APP_START the Status register should be accessed to check if there is a valid application present\&. 
+.SS "#define APP_VERIFY   0xF3,0"
+
+.PP
+(W) (Bootloader) Starts the process of the bootloader checking though the application to make sure a full image is valid\&. 
+.SS "#define BASELINE   0x11,2"
+
+.PP
+(RW) (Application) Baseline register\&. Read/Write, 2 bytes 
+.SS "#define CCS811_ADDR_HIGH   0x5b"
+
+.PP
+Pin Addr is high: sets address to 0x5b\&. Linux Raspbian (Raspberry PI) Shared Library for AMS AG CCS811 - Ultra-Low Power Digital Gas Sensor for Monitoring Indoor Air Quality
+.PP
+\fBAuthor:\fP
+.RS 4
+Alvaro Salazar alvaro@denkitronik.com http://www.denkitronik.com 
+.RE
+.PP
+
+.SS "#define CCS811_ADDR_LOW   0x5a"
+
+.PP
+Pin Addr is low: sets address to 0x5a\&. 
+.SS "#define DEBUG"
+
+.SS "#define ENV_DATA   0x05,4"
+
+.PP
+(W) (Application) Environment data register\&. Write, 4 bytes 
+.SS "#define ERROR_ID   0xE0,1"
+
+.PP
+(R) (Bootloader) (Application) Error Id register\&. Read, 1 byte 
+.SS "#define FW_APP_VERSION   0x24,2"
+
+.PP
+(R) (Bootloader) (Application) Firmware application version register\&. Read, 2 bytes 
+.SS "#define FW_BOOT_VERSION   0x23,2"
+
+.PP
+(R) (Bootloader) (Application) Firmware boot version register\&. Read, 2 bytes 
+.SS "#define HW_ID   0x20,1"
+
+.PP
+(R) (Bootloader) (Application) Hardware id register\&. Read, 1 byte 
+.SS "#define HW_VERSION   0x21,1"
+
+.PP
+(R) (Bootloader) (Application) Hardware version register\&. Read, 1 byte 
+.SS "#define INTERNAL_STATE   0xA0,1"
+
+.PP
+(R) (Application) Internal Status register (No documentation available for this register)\&. Read, 1 byte 
+.SS "#define MEAS_MODE   0x01,1"
+
+.PP
+(RW) (Application) meas_mode register, Read/Write 1 byte 
+.SS "#define NTC   0x06,4"
+
+.PP
+(R) (Application) (Old V1\&.0 Only) NTC sensor register\&. Read, 4 bytes 
+.SS "#define PRINT_ERRORS(x)"
+
+.SS "#define printErrors(x)   printErrors(x)"
+
+.SS "#define RAW_DATA   0x03,2"
+
+.PP
+(R) (Application) Raw data register\&. Read, 2 bytes 
+.SS "#define STATUS   0x00,1"
+
+.PP
+(R) (Bootloader) (Application) Status register\&. Read only, 1 byte 
+.SS "#define SW_RESET   0xFF,4"
+
+.PP
+(W) (Bootloader) (Application) Software reset register\&. Write, 4 bytes 
+.SS "#define THRESHOLDS   0x10,4"
+
+.PP
+(W) (Application) Thresholds register\&. Write, 4 bytes 
+.SH "Function Documentation"
+.PP 
+.SS "uint8_t available ()"
+Check if there is a data available 
+.PP
+\fBReturns:\fP
+.RS 4
+State of the interrupt pin settled with \fBsetInterruptPin()\fP function 
+.RE
+.PP
+
+.SS "void clearAppReg ()"
+Clear the current Application Registers 
+.SS "void connectCCS811 (const char address)"
+Connect to the CCS811 plugged in the I2C bus with the specified address 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaddress\fP Address of the CCS811\&.
+.br
+ Only two valid address: CCS811_ADDR_HIGH and CCS811_ADDR_LOW 
+.RE
+.PP
+
+.SS "union \fBApplicationRegister\fP getAppRegister ()"
+Get the current application register of the CCS811\&. 
+.br
+ It is no valid until \fBreadRegister()\fP be called\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The current application register 
+.RE
+.PP
+
+.SS "void printAppReg ()"
+Prints the current Application Register 
+.SS "void printErrors (char * message)"
+Prints to stdout the state of errors 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP Title of the printing in the stdout 
+.RE
+.PP
+
+.SS "void printHealthECO2 (uint16_t eco2)"
+Prints information about the impact of the eCO2 in the human health\&.
+.br
+ Messages taken from: https://www.kane.co.uk/knowledge-centre/what-are-safe-levels-of-co-and-co2-in-rooms 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIeco2\fP Level of the eCO2 in ppm 
+.RE
+.PP
+
+.SS "void printHealthVOC (uint16_t tvoc)"
+Prints information about the impact of the eTVOC in the human health\&. Taken of TVOC guidelines issued by the German Federal Environmental Agency 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItvoc\fP Level of the eTVOC in ppm 
+.RE
+.PP
+
+.SS "void printStatus ()"
+Prints the status register 
+.SS "void readRegister (const char reg, int numBytes)"
+Read a number of bytes of the register specified\&. Use it in this way (example): readRegister(STATUS) 
+.br
+ Valid values are (these constants contains reg and numBytes): STATUS MEAS_MODE ALG_RESULT_DATA RAW_DATA ENV_DATA NTC THRESHOLDS BASELINE HW_ID HW_VERSION FW_BOOT_VERSION FW_APP_VERSION INTERNAL_STATE ERROR_ID APP_ERASE APP_DATA APP_VERIFY APP_START SW_RESET 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreg\fP Register to be read\&. 
+.br
+\fInumBytes\fP Number of bytes to be read from the register\&. 
+.RE
+.PP
+
+.SS "void resetCCS811 ()"
+Resets the CCS811 using the specified pin in \fBsetResetPin()\fP function 
+.SS "void setEnvironmentData (float temperature, float humidity)"
+Specify enviroment data to adjust the measurement of eCO2 and eTVOC levels 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItemperature\fP Environment's temperature in degree celsius 
+.br
+\fIhumidity\fP Environment's humidity in % Relative Humidity 
+.RE
+.PP
+
+.SS "void setInterruptPin (char pin)"
+Set the Interrupt pin in the Raspberry PI (use wiringpi pinout) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpin\fP WiringPi pin number where the interrupt pin is connected 
+.RE
+.PP
+
+.SS "void setResetPin (char pin)"
+Set the Reset pin in the Raspberry PI (use wiringpi pinout) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpin\fP number wiringpi style where the reset pin is connected 
+.RE
+.PP
+
+.SS "void writeRegister (const char reg, const int numBytes)"
+Write appReg in the specified register 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreg\fP Register to be written 
+.br
+\fInumBytes\fP Number of bytes to be written 
+.RE
+.PP
+
+.SH "Variable Documentation"
+.PP 
+.SS "const uint8_t MODE0_IDLE = 0b000"
+
+.PP
+Measurements are disabled in this mode\&. 
+.SS "const uint8_t MODE1_EACH_1S = 0b001"
+
+.PP
+Constant power mode, IAQ measurement every second\&. 
+.SS "const uint8_t MODE2_EACH_10S = 0b010"
+
+.PP
+Pulse heating mode IAQ measurement every 10 seconds\&. 
+.SS "const uint8_t MODE3_EACH_60S = 0b011"
+
+.PP
+Low power pulse heating mode IAQ measurement every 60 seconds\&. 
+.SS "const uint8_t MODE4_EACH_250MS = 0b100"
+
+.PP
+In mode 4, the ALG_RESULT_DATA is not updated, only RAW_DATA\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libccs811 from the source code\&.

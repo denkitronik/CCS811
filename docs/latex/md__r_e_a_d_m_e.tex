@@ -1,0 +1,76 @@
+This is an easy to use shared library for C\+O2 and T\+V\+OC sensor C\+C\+S811
+
+\subsection*{Getting Started}
+
+\subsubsection*{Prerequisites}
+
+Wiring\+Pi library installed
+
+\subsubsection*{Installing}
+
+Download this library as zip file, then click in \char`\"{}\+Sketch\char`\"{} -\/$>$ \char`\"{}\+Include Library\char`\"{} -\/$>$\char`\"{}\+Add .\+Z\+I\+P Library\char`\"{} and select the zip file downloaded.
+
+\subsection*{Running the tests}
+
+
+\begin{DoxyEnumerate}
+\item Connect the A\+D\+S1118 in the 3.\+3v power supply pins of your Arduino.
+\item Connect the A\+D\+S1118 CS pin to the pin 5 of your Arduino.
+\item Connect the A\+D\+S1118 M\+I\+SO (D\+O\+UT), M\+O\+S\+I(\+D\+I\+N) and S\+C\+LK pins to the M\+I\+SO, M\+O\+SI and S\+C\+LK of your Arduino (search on internet \char`\"{}\+Arduino I\+C\+S\+P pinout\char`\"{}).
+\end{DoxyEnumerate}
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\multicolumn{2}{|p{(\linewidth-\tabcolsep*2-\arrayrulewidth*1)*2/2}|}{\cellcolor{\tableheadbgcolor}\textbf{ A\+R\+D\+U\+I\+NO (IC   }}\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\multicolumn{2}{|p{(\linewidth-\tabcolsep*2-\arrayrulewidth*1)*2/2}|}{\cellcolor{\tableheadbgcolor}\textbf{ A\+R\+D\+U\+I\+NO (IC   }}\\\cline{1-2}
+\endhead
+M\+O\+SI  &D\+IN   \\\cline{1-2}
+M\+I\+SO  &D\+O\+UT   \\\cline{1-2}
+S\+C\+LK  &S\+C\+LK   \\\cline{1-2}
+5 (change this pin to fit your needs)  &CS   \\\cline{1-2}
+\end{longtabu}
+
+
+
+\begin{DoxyEnumerate}
+\item Run the examples provided in your Arduino I\+DE. Go to \char`\"{}\+File\char`\"{} -\/$>$ \char`\"{}\+Examples\char`\"{} -\/$>$ \char`\"{}\+A\+D\+S1118 library\char`\"{} -\/$>$ \char`\"{}basic\+Example\+Ads1118\char`\"{} or \char`\"{}ads1118example\char`\"{}
+\end{DoxyEnumerate}
+
+\subsection*{Example with a thermocouple}
+
+This is the typical circuit for a \char`\"{}thermocouple measurement system\char`\"{} as shown in the TI \href{http://www.ti.com/lit/ds/symlink/ads1118.pdf}{\tt A\+D\+S1118 datasheet page 32}. 
+
+\subsection*{Built With}
+
+
+\begin{DoxyItemize}
+\item \href{https://www.arduino.cc/}{\tt Arduino I\+DE}
+\end{DoxyItemize}
+
+\subsection*{Contributing}
+
+Everyone is invited to contribute When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with me before making a change.
+
+\subsection*{Release History}
+
+1.\+0.\+0 C\+H\+A\+N\+GE\+: Initial commit
+
+\subsection*{Versioning}
+
+I am using \href{http://semver.org/}{\tt Sem\+Ver} for versioning.
+
+\subsection*{Authors}
+
+
+\begin{DoxyItemize}
+\item {\bfseries Alvaro Salazar} -\/ {\itshape Initial work} -\/ \href{https://github.com/alvaro-salazar}{\tt alvaro-\/salazar}
+\end{DoxyItemize}
+
+\subsection*{License}
+
+This project is licensed under the M\+IT License -\/ see the \mbox{\hyperlink{md__l_i_c_e_n_s_e}{L\+I\+C\+E\+N\+SE}} file for details. 

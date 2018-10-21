@@ -1,0 +1,356 @@
+\hypertarget{libccs811_8c}{}\section{libccs811.\+c File Reference}
+\label{libccs811_8c}\index{libccs811.\+c@{libccs811.\+c}}
+{\ttfamily \#include $<$wiring\+Pi.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$linux/i2c-\/dev.\+h$>$}\newline
+{\ttfamily \#include $<$sys/ioctl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}libccs811.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{libccs811_8c_a2a4436ab92faae60d4e24f2c04147692}{get\+Selected\+Register}} (char register\+Selected)
+\item 
+void \mbox{\hyperlink{libccs811_8c_aed854addc4ab77fff5941e121e3ca8c4}{select\+Register}} (const char reg)
+\item 
+void \mbox{\hyperlink{libccs811_8c_acf43e33a08e5e43cd4cb4f94cca33e61}{read\+I2C}} (const int num\+Bytes)
+\item 
+void \mbox{\hyperlink{libccs811_8c_a6f6cbd102fbda73eeb0ed545f81810b3}{write\+I2\+C\+Bytes}} (const char reg, int num\+Bytes)
+\item 
+const char \mbox{\hyperlink{libccs811_8c_a3969ffcf332383b6910ed694c7d404ea}{get\+Register}} (const char reg, const int num\+Bytes)
+\item 
+union \mbox{\hyperlink{union_application_register}{Application\+Register}} \mbox{\hyperlink{libccs811_8c_af4955c494ac44a1fabf338bb0b310af0}{get\+App\+Register}} ()
+\item 
+void \mbox{\hyperlink{libccs811_8c_a4a0faf1122a3ea835f9fe3e7371b7613}{reset\+C\+C\+S811}} ()
+\item 
+void \mbox{\hyperlink{libccs811_8c_ae4a55fc763e769c416030d324f0bd636}{set\+Reset\+Pin}} (char pin)
+\item 
+void \mbox{\hyperlink{libccs811_8c_aa8b0aa7bac88cead99250731b017ebd7}{set\+Interrupt\+Pin}} (char pin)
+\item 
+void \mbox{\hyperlink{libccs811_8c_a08f420fdea8894ad37eba7001a93b52b}{set\+Address\+Pin}} (char pin)
+\item 
+void \mbox{\hyperlink{libccs811_8c_a0a87823987286e3d8cc6b94ca68dcebf}{set\+Environment\+Data}} (float temperature, float humidity)
+\item 
+void \mbox{\hyperlink{libccs811_8c_aa9004a0567587ffca84ad248a712beb4}{print\+App\+Reg}} ()
+\item 
+void \mbox{\hyperlink{libccs811_8c_a743686a7f8c73933aa49668fd432ebb4}{print\+Status}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libccs811_8c_aa0bd01dfdc6b1a42f72793ab9d39879c}{available}} ()
+\item 
+void \mbox{\hyperlink{libccs811_8c_a5e60cb2e662309ab101ffc97b509523d}{clear\+App\+Reg}} ()
+\item 
+void \mbox{\hyperlink{libccs811_8c_a8d01f848cb6b94b268c5e6a0948fb821}{print\+Errors}} (char $\ast$message)
+\item 
+void \mbox{\hyperlink{libccs811_8c_afb40b9602cbd2a44a275f171ad4bc128}{read\+Register}} (const char reg, int num\+Bytes)
+\item 
+void \mbox{\hyperlink{libccs811_8c_ac269aead693f977edd3c2562ca02c8ee}{print\+Health\+E\+C\+O2}} (uint16\+\_\+t eco2)
+\item 
+void \mbox{\hyperlink{libccs811_8c_a5db4c1d456a40540d5f63dc600c27c66}{print\+Health\+V\+OC}} (uint16\+\_\+t tvoc)
+\item 
+void \mbox{\hyperlink{libccs811_8c_aa4bd518c31568be9291e6a78a8d7ccd0}{write\+Register}} (const char reg, const int num\+Bytes)
+\item 
+void \mbox{\hyperlink{libccs811_8c_a1037ec08bbd5275f65eb684d8a02d69e}{connect\+C\+C\+S811}} (const char address)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{libccs811_8c_a27512f019af1398ae842cb980460d103}{address\+Pin}} =\mbox{\hyperlink{libccs811_8h_ad8971d3db1c4e6708bece49e5d7556d9}{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH}}
+\begin{DoxyCompactList}\small\item\em Address pin in the Raspberry PI (use wiringpi pinout) \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{libccs811_8c_aa781a6d2dc1d4b31cbcc84729a6dbf0a}{reset\+Pin}} = 3
+\begin{DoxyCompactList}\small\item\em Reset pin in the Raspberry PI (use wiringpi pinout) \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{libccs811_8c_a582c7908520987f3ba43dad32e8575ff}{interrupt\+Pin}} = 2
+\begin{DoxyCompactList}\small\item\em Interrupt pin in the Raspberry PI (use wiringpi pinout) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{libccs811_8c_a6fb021f1c9bd6c7fc72f1c0f24b81b38}{file}}
+\begin{DoxyCompactList}\small\item\em File descriptor, a nonnegative integer can be used in subsequent system calls (read(), write(), lseek(), fcntl(), etc.) \end{DoxyCompactList}\item 
+union \mbox{\hyperlink{union_application_register}{Application\+Register}} \mbox{\hyperlink{libccs811_8c_a1ff93e2521eaef107c38df26e47e9481}{app\+Reg}}
+\begin{DoxyCompactList}\small\item\em Application register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{libccs811_8c_aa0bd01dfdc6b1a42f72793ab9d39879c}\label{libccs811_8c_aa0bd01dfdc6b1a42f72793ab9d39879c}} 
+\index{libccs811.\+c@{libccs811.\+c}!available@{available}}
+\index{available@{available}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{available()}{available()}}
+{\footnotesize\ttfamily uint8\+\_\+t available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if there is a data available \begin{DoxyReturn}{Returns}
+State of the interrupt pin settled with \mbox{\hyperlink{libccs811_8c_aa8b0aa7bac88cead99250731b017ebd7}{set\+Interrupt\+Pin()}} function 
+\end{DoxyReturn}
+\mbox{\Hypertarget{libccs811_8c_a5e60cb2e662309ab101ffc97b509523d}\label{libccs811_8c_a5e60cb2e662309ab101ffc97b509523d}} 
+\index{libccs811.\+c@{libccs811.\+c}!clear\+App\+Reg@{clear\+App\+Reg}}
+\index{clear\+App\+Reg@{clear\+App\+Reg}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{clear\+App\+Reg()}{clearAppReg()}}
+{\footnotesize\ttfamily void clear\+App\+Reg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clear the current Application Registers \mbox{\Hypertarget{libccs811_8c_a1037ec08bbd5275f65eb684d8a02d69e}\label{libccs811_8c_a1037ec08bbd5275f65eb684d8a02d69e}} 
+\index{libccs811.\+c@{libccs811.\+c}!connect\+C\+C\+S811@{connect\+C\+C\+S811}}
+\index{connect\+C\+C\+S811@{connect\+C\+C\+S811}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{connect\+C\+C\+S811()}{connectCCS811()}}
+{\footnotesize\ttfamily void connect\+C\+C\+S811 (\begin{DoxyParamCaption}\item[{const char}]{address }\end{DoxyParamCaption})}
+
+Connect to the C\+C\+S811 plugged in the I2C bus with the specified address 
+\begin{DoxyParams}{Parameters}
+{\em address} & Address of the C\+C\+S811.~\newline
+ Only two valid address\+: C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH and C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+L\+OW \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_af4955c494ac44a1fabf338bb0b310af0}\label{libccs811_8c_af4955c494ac44a1fabf338bb0b310af0}} 
+\index{libccs811.\+c@{libccs811.\+c}!get\+App\+Register@{get\+App\+Register}}
+\index{get\+App\+Register@{get\+App\+Register}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{get\+App\+Register()}{getAppRegister()}}
+{\footnotesize\ttfamily union \mbox{\hyperlink{union_application_register}{Application\+Register}} get\+App\+Register (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the current application register of the C\+C\+S811. ~\newline
+ It is no valid until \mbox{\hyperlink{libccs811_8c_afb40b9602cbd2a44a275f171ad4bc128}{read\+Register()}} be called. \begin{DoxyReturn}{Returns}
+The current application register 
+\end{DoxyReturn}
+\mbox{\Hypertarget{libccs811_8c_a3969ffcf332383b6910ed694c7d404ea}\label{libccs811_8c_a3969ffcf332383b6910ed694c7d404ea}} 
+\index{libccs811.\+c@{libccs811.\+c}!get\+Register@{get\+Register}}
+\index{get\+Register@{get\+Register}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{get\+Register()}{getRegister()}}
+{\footnotesize\ttfamily const char get\+Register (\begin{DoxyParamCaption}\item[{const char}]{reg,  }\item[{const int}]{num\+Bytes }\end{DoxyParamCaption})}
+
+Returns the register specified in the \char`\"{}\+C\+C\+S811 constants\char`\"{} because they contain reg and num\+Bytes concatenated\+: S\+T\+A\+T\+US M\+E\+A\+S\+\_\+\+M\+O\+DE A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA R\+A\+W\+\_\+\+D\+A\+TA E\+N\+V\+\_\+\+D\+A\+TA N\+TC T\+H\+R\+E\+S\+H\+O\+L\+DS B\+A\+S\+E\+L\+I\+NE H\+W\+\_\+\+ID H\+W\+\_\+\+V\+E\+R\+S\+I\+ON F\+W\+\_\+\+B\+O\+O\+T\+\_\+\+V\+E\+R\+S\+I\+ON F\+W\+\_\+\+A\+P\+P\+\_\+\+V\+E\+R\+S\+I\+ON I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+A\+TE E\+R\+R\+O\+R\+\_\+\+ID A\+P\+P\+\_\+\+E\+R\+A\+SE A\+P\+P\+\_\+\+D\+A\+TA A\+P\+P\+\_\+\+V\+E\+R\+I\+FY A\+P\+P\+\_\+\+S\+T\+A\+RT S\+W\+\_\+\+R\+E\+S\+ET 
+\begin{DoxyParams}{Parameters}
+{\em reg} & The register specified \\
+\hline
+{\em num\+Bytes} & The number of bytes of the register specified in reg to be read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The register selected 
+\end{DoxyReturn}
+\mbox{\Hypertarget{libccs811_8c_a2a4436ab92faae60d4e24f2c04147692}\label{libccs811_8c_a2a4436ab92faae60d4e24f2c04147692}} 
+\index{libccs811.\+c@{libccs811.\+c}!get\+Selected\+Register@{get\+Selected\+Register}}
+\index{get\+Selected\+Register@{get\+Selected\+Register}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{get\+Selected\+Register()}{getSelectedRegister()}}
+{\footnotesize\ttfamily char $\ast$ get\+Selected\+Register (\begin{DoxyParamCaption}\item[{char}]{register\+Selected }\end{DoxyParamCaption})}
+
+Get a string with the name of the selected register 
+\begin{DoxyParams}{Parameters}
+{\em register\+Selected} & Selected register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String with the name of the selected register 
+\end{DoxyReturn}
+\mbox{\Hypertarget{libccs811_8c_aa9004a0567587ffca84ad248a712beb4}\label{libccs811_8c_aa9004a0567587ffca84ad248a712beb4}} 
+\index{libccs811.\+c@{libccs811.\+c}!print\+App\+Reg@{print\+App\+Reg}}
+\index{print\+App\+Reg@{print\+App\+Reg}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{print\+App\+Reg()}{printAppReg()}}
+{\footnotesize\ttfamily void print\+App\+Reg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints the current Application Register \mbox{\Hypertarget{libccs811_8c_a8d01f848cb6b94b268c5e6a0948fb821}\label{libccs811_8c_a8d01f848cb6b94b268c5e6a0948fb821}} 
+\index{libccs811.\+c@{libccs811.\+c}!print\+Errors@{print\+Errors}}
+\index{print\+Errors@{print\+Errors}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{print\+Errors()}{printErrors()}}
+{\footnotesize\ttfamily void print\+Errors (\begin{DoxyParamCaption}\item[{char $\ast$}]{message }\end{DoxyParamCaption})}
+
+Prints to stdout the state of errors 
+\begin{DoxyParams}{Parameters}
+{\em message} & Title of the printing in the stdout \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_ac269aead693f977edd3c2562ca02c8ee}\label{libccs811_8c_ac269aead693f977edd3c2562ca02c8ee}} 
+\index{libccs811.\+c@{libccs811.\+c}!print\+Health\+E\+C\+O2@{print\+Health\+E\+C\+O2}}
+\index{print\+Health\+E\+C\+O2@{print\+Health\+E\+C\+O2}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{print\+Health\+E\+C\+O2()}{printHealthECO2()}}
+{\footnotesize\ttfamily void print\+Health\+E\+C\+O2 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{eco2 }\end{DoxyParamCaption})}
+
+Prints information about the impact of the e\+C\+O2 in the human health.~\newline
+ Messages taken from\+: \href{https://www.kane.co.uk/knowledge-centre/what-are-safe-levels-of-co-and-co2-in-rooms}{\tt https\+://www.\+kane.\+co.\+uk/knowledge-\/centre/what-\/are-\/safe-\/levels-\/of-\/co-\/and-\/co2-\/in-\/rooms} 
+\begin{DoxyParams}{Parameters}
+{\em eco2} & Level of the e\+C\+O2 in ppm \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_a5db4c1d456a40540d5f63dc600c27c66}\label{libccs811_8c_a5db4c1d456a40540d5f63dc600c27c66}} 
+\index{libccs811.\+c@{libccs811.\+c}!print\+Health\+V\+OC@{print\+Health\+V\+OC}}
+\index{print\+Health\+V\+OC@{print\+Health\+V\+OC}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{print\+Health\+V\+O\+C()}{printHealthVOC()}}
+{\footnotesize\ttfamily void print\+Health\+V\+OC (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{tvoc }\end{DoxyParamCaption})}
+
+Prints information about the impact of the e\+T\+V\+OC in the human health. Taken of T\+V\+OC guidelines issued by the German Federal Environmental Agency 
+\begin{DoxyParams}{Parameters}
+{\em tvoc} & Level of the e\+T\+V\+OC in ppm \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_a743686a7f8c73933aa49668fd432ebb4}\label{libccs811_8c_a743686a7f8c73933aa49668fd432ebb4}} 
+\index{libccs811.\+c@{libccs811.\+c}!print\+Status@{print\+Status}}
+\index{print\+Status@{print\+Status}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{print\+Status()}{printStatus()}}
+{\footnotesize\ttfamily void print\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints the status register \mbox{\Hypertarget{libccs811_8c_acf43e33a08e5e43cd4cb4f94cca33e61}\label{libccs811_8c_acf43e33a08e5e43cd4cb4f94cca33e61}} 
+\index{libccs811.\+c@{libccs811.\+c}!read\+I2C@{read\+I2C}}
+\index{read\+I2C@{read\+I2C}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{read\+I2\+C()}{readI2C()}}
+{\footnotesize\ttfamily void read\+I2C (\begin{DoxyParamCaption}\item[{const int}]{num\+Bytes }\end{DoxyParamCaption})}
+
+Read a number of bytes of the selected register 
+\begin{DoxyParams}{Parameters}
+{\em num\+Bytes} & Number of bytes to be read \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_afb40b9602cbd2a44a275f171ad4bc128}\label{libccs811_8c_afb40b9602cbd2a44a275f171ad4bc128}} 
+\index{libccs811.\+c@{libccs811.\+c}!read\+Register@{read\+Register}}
+\index{read\+Register@{read\+Register}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{read\+Register()}{readRegister()}}
+{\footnotesize\ttfamily void read\+Register (\begin{DoxyParamCaption}\item[{const char}]{reg,  }\item[{int}]{num\+Bytes }\end{DoxyParamCaption})}
+
+Read a number of bytes of the register specified. Use it in this way (example)\+: read\+Register(\+S\+T\+A\+T\+U\+S) ~\newline
+ Valid values are (these constants contains reg and num\+Bytes)\+: S\+T\+A\+T\+US M\+E\+A\+S\+\_\+\+M\+O\+DE A\+L\+G\+\_\+\+R\+E\+S\+U\+L\+T\+\_\+\+D\+A\+TA R\+A\+W\+\_\+\+D\+A\+TA E\+N\+V\+\_\+\+D\+A\+TA N\+TC T\+H\+R\+E\+S\+H\+O\+L\+DS B\+A\+S\+E\+L\+I\+NE H\+W\+\_\+\+ID H\+W\+\_\+\+V\+E\+R\+S\+I\+ON F\+W\+\_\+\+B\+O\+O\+T\+\_\+\+V\+E\+R\+S\+I\+ON F\+W\+\_\+\+A\+P\+P\+\_\+\+V\+E\+R\+S\+I\+ON I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+T\+A\+TE E\+R\+R\+O\+R\+\_\+\+ID A\+P\+P\+\_\+\+E\+R\+A\+SE A\+P\+P\+\_\+\+D\+A\+TA A\+P\+P\+\_\+\+V\+E\+R\+I\+FY A\+P\+P\+\_\+\+S\+T\+A\+RT S\+W\+\_\+\+R\+E\+S\+ET 
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register to be read. \\
+\hline
+{\em num\+Bytes} & Number of bytes to be read from the register. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_a4a0faf1122a3ea835f9fe3e7371b7613}\label{libccs811_8c_a4a0faf1122a3ea835f9fe3e7371b7613}} 
+\index{libccs811.\+c@{libccs811.\+c}!reset\+C\+C\+S811@{reset\+C\+C\+S811}}
+\index{reset\+C\+C\+S811@{reset\+C\+C\+S811}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{reset\+C\+C\+S811()}{resetCCS811()}}
+{\footnotesize\ttfamily void reset\+C\+C\+S811 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Resets the C\+C\+S811 using the specified pin in \mbox{\hyperlink{libccs811_8c_ae4a55fc763e769c416030d324f0bd636}{set\+Reset\+Pin()}} function \mbox{\Hypertarget{libccs811_8c_aed854addc4ab77fff5941e121e3ca8c4}\label{libccs811_8c_aed854addc4ab77fff5941e121e3ca8c4}} 
+\index{libccs811.\+c@{libccs811.\+c}!select\+Register@{select\+Register}}
+\index{select\+Register@{select\+Register}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{select\+Register()}{selectRegister()}}
+{\footnotesize\ttfamily void select\+Register (\begin{DoxyParamCaption}\item[{const char}]{reg }\end{DoxyParamCaption})}
+
+Selects a register to be read 
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register to be read \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_a08f420fdea8894ad37eba7001a93b52b}\label{libccs811_8c_a08f420fdea8894ad37eba7001a93b52b}} 
+\index{libccs811.\+c@{libccs811.\+c}!set\+Address\+Pin@{set\+Address\+Pin}}
+\index{set\+Address\+Pin@{set\+Address\+Pin}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{set\+Address\+Pin()}{setAddressPin()}}
+{\footnotesize\ttfamily void set\+Address\+Pin (\begin{DoxyParamCaption}\item[{char}]{pin }\end{DoxyParamCaption})}
+
+Set the Address pin in the Raspberry PI (use wiringpi pinout). ~\newline
+ It has no effect until \mbox{\hyperlink{libccs811_8c_a1037ec08bbd5275f65eb684d8a02d69e}{connect\+C\+C\+S811()}} is called 
+\begin{DoxyParams}{Parameters}
+{\em pin} & Wiring\+Pi pin number where the address pin is connected \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_a0a87823987286e3d8cc6b94ca68dcebf}\label{libccs811_8c_a0a87823987286e3d8cc6b94ca68dcebf}} 
+\index{libccs811.\+c@{libccs811.\+c}!set\+Environment\+Data@{set\+Environment\+Data}}
+\index{set\+Environment\+Data@{set\+Environment\+Data}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{set\+Environment\+Data()}{setEnvironmentData()}}
+{\footnotesize\ttfamily void set\+Environment\+Data (\begin{DoxyParamCaption}\item[{float}]{temperature,  }\item[{float}]{humidity }\end{DoxyParamCaption})}
+
+Specify enviroment data to adjust the measurement of e\+C\+O2 and e\+T\+V\+OC levels 
+\begin{DoxyParams}{Parameters}
+{\em temperature} & Environment\textquotesingle{}s temperature in degree celsius \\
+\hline
+{\em humidity} & Environment\textquotesingle{}s humidity in \% Relative Humidity \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_aa8b0aa7bac88cead99250731b017ebd7}\label{libccs811_8c_aa8b0aa7bac88cead99250731b017ebd7}} 
+\index{libccs811.\+c@{libccs811.\+c}!set\+Interrupt\+Pin@{set\+Interrupt\+Pin}}
+\index{set\+Interrupt\+Pin@{set\+Interrupt\+Pin}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{set\+Interrupt\+Pin()}{setInterruptPin()}}
+{\footnotesize\ttfamily void set\+Interrupt\+Pin (\begin{DoxyParamCaption}\item[{char}]{pin }\end{DoxyParamCaption})}
+
+Set the Interrupt pin in the Raspberry PI (use wiringpi pinout) 
+\begin{DoxyParams}{Parameters}
+{\em pin} & Wiring\+Pi pin number where the interrupt pin is connected \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_ae4a55fc763e769c416030d324f0bd636}\label{libccs811_8c_ae4a55fc763e769c416030d324f0bd636}} 
+\index{libccs811.\+c@{libccs811.\+c}!set\+Reset\+Pin@{set\+Reset\+Pin}}
+\index{set\+Reset\+Pin@{set\+Reset\+Pin}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{set\+Reset\+Pin()}{setResetPin()}}
+{\footnotesize\ttfamily void set\+Reset\+Pin (\begin{DoxyParamCaption}\item[{char}]{pin }\end{DoxyParamCaption})}
+
+Set the Reset pin in the Raspberry PI (use wiringpi pinout) 
+\begin{DoxyParams}{Parameters}
+{\em pin} & number wiringpi style where the reset pin is connected \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_a6f6cbd102fbda73eeb0ed545f81810b3}\label{libccs811_8c_a6f6cbd102fbda73eeb0ed545f81810b3}} 
+\index{libccs811.\+c@{libccs811.\+c}!write\+I2\+C\+Bytes@{write\+I2\+C\+Bytes}}
+\index{write\+I2\+C\+Bytes@{write\+I2\+C\+Bytes}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{write\+I2\+C\+Bytes()}{writeI2CBytes()}}
+{\footnotesize\ttfamily void write\+I2\+C\+Bytes (\begin{DoxyParamCaption}\item[{const char}]{reg,  }\item[{int}]{num\+Bytes }\end{DoxyParamCaption})}
+
+Write a number of bytes of the the prepared app\+Reg.\+buffer in the specified register 
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register to be written \\
+\hline
+{\em num\+Bytes} & Number of bytes of app\+Reg.\+buffer to be written \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{libccs811_8c_aa4bd518c31568be9291e6a78a8d7ccd0}\label{libccs811_8c_aa4bd518c31568be9291e6a78a8d7ccd0}} 
+\index{libccs811.\+c@{libccs811.\+c}!write\+Register@{write\+Register}}
+\index{write\+Register@{write\+Register}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{write\+Register()}{writeRegister()}}
+{\footnotesize\ttfamily void write\+Register (\begin{DoxyParamCaption}\item[{const char}]{reg,  }\item[{const int}]{num\+Bytes }\end{DoxyParamCaption})}
+
+Write app\+Reg in the specified register 
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register to be written \\
+\hline
+{\em num\+Bytes} & Number of bytes to be written \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{libccs811_8c_a27512f019af1398ae842cb980460d103}\label{libccs811_8c_a27512f019af1398ae842cb980460d103}} 
+\index{libccs811.\+c@{libccs811.\+c}!address\+Pin@{address\+Pin}}
+\index{address\+Pin@{address\+Pin}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{address\+Pin}{addressPin}}
+{\footnotesize\ttfamily char address\+Pin =\mbox{\hyperlink{libccs811_8h_ad8971d3db1c4e6708bece49e5d7556d9}{C\+C\+S811\+\_\+\+A\+D\+D\+R\+\_\+\+H\+I\+GH}}}
+
+
+
+Address pin in the Raspberry PI (use wiringpi pinout) 
+
+\mbox{\Hypertarget{libccs811_8c_a1ff93e2521eaef107c38df26e47e9481}\label{libccs811_8c_a1ff93e2521eaef107c38df26e47e9481}} 
+\index{libccs811.\+c@{libccs811.\+c}!app\+Reg@{app\+Reg}}
+\index{app\+Reg@{app\+Reg}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{app\+Reg}{appReg}}
+{\footnotesize\ttfamily union \mbox{\hyperlink{union_application_register}{Application\+Register}} app\+Reg}
+
+
+
+Application register. 
+
+\mbox{\Hypertarget{libccs811_8c_a6fb021f1c9bd6c7fc72f1c0f24b81b38}\label{libccs811_8c_a6fb021f1c9bd6c7fc72f1c0f24b81b38}} 
+\index{libccs811.\+c@{libccs811.\+c}!file@{file}}
+\index{file@{file}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{file}{file}}
+{\footnotesize\ttfamily int file}
+
+
+
+File descriptor, a nonnegative integer can be used in subsequent system calls (read(), write(), lseek(), fcntl(), etc.) 
+
+\mbox{\Hypertarget{libccs811_8c_a582c7908520987f3ba43dad32e8575ff}\label{libccs811_8c_a582c7908520987f3ba43dad32e8575ff}} 
+\index{libccs811.\+c@{libccs811.\+c}!interrupt\+Pin@{interrupt\+Pin}}
+\index{interrupt\+Pin@{interrupt\+Pin}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{interrupt\+Pin}{interruptPin}}
+{\footnotesize\ttfamily char interrupt\+Pin = 2}
+
+
+
+Interrupt pin in the Raspberry PI (use wiringpi pinout) 
+
+\mbox{\Hypertarget{libccs811_8c_aa781a6d2dc1d4b31cbcc84729a6dbf0a}\label{libccs811_8c_aa781a6d2dc1d4b31cbcc84729a6dbf0a}} 
+\index{libccs811.\+c@{libccs811.\+c}!reset\+Pin@{reset\+Pin}}
+\index{reset\+Pin@{reset\+Pin}!libccs811.\+c@{libccs811.\+c}}
+\subsubsection{\texorpdfstring{reset\+Pin}{resetPin}}
+{\footnotesize\ttfamily char reset\+Pin = 3}
+
+
+
+Reset pin in the Raspberry PI (use wiringpi pinout) 
+

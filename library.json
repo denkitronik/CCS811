@@ -1,0 +1,19 @@
+{
+	"name": "CSS811 shared library",
+	"version": "1.0.0",
+	"frameworks": "WiringPi",
+	"license": "MIT",
+	"keywords": "CSS811, SPI, CO2, VOC",
+	"description": "Linux Raspbian (Raspberry PI) Shared Library for AMS AG CCS811 - Ultra-Low Power Digital Gas Sensor for Monitoring Indoor Air Quality.",
+	"downloadUrl": "https://github.com/denkitronik/CCS811/archive/master.zip",
+	"authors":
+		{
+	        "name": "Alvaro Salazar <alvaro@denkitronik.com>",
+	        "maintainer": true
+		},
+	"repository":
+		{
+		    "type": "git",
+		    "url": "https://github.com/denkitronik/CCS811" 
+		}
+}
