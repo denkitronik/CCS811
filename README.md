@@ -103,7 +103,7 @@ git pull origin
 
 
 See the following image:
-![alt text](https://github.com/denkitronik/ADS1118/blob/master/pinout.png)
+![alt text](https://github.com/denkitronik/CCS811/blob/master/pinout.png)
 
 For more information visit: [pinout.xyz](https://pinout.xyz/pinout/i2c#)
 
