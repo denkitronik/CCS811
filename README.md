@@ -36,24 +36,28 @@ gpio -v
 2. If you need or want to get the last version of wiringPi uninstall the current version of wiringPi:
 
 sudo apt-get purge wiringpi
+
 hash -r
 
 
 3. Let's update to the last software repository and install "git":
 
 sudo apt-get update
+
 sudo apt-get install git-core
 
 
 4. Go to your home directory and get wiringPi:
 
 cd
+
 git clone git://git.drogon.net/wiringPi
 
 
 5. Enter to the wiringPi directory and check you have the last version:
 
 cd ~/wiringPi
+
 git pull origin
 
 
@@ -67,18 +71,21 @@ INSTALL LIBCCS811
 1. Let's check if you have updated the software repository and install "git":
 
 sudo apt-get update
+
 sudo apt-get install git-core
 
 
 2. Go to your home directory and get "libccs811":
 
 cd
+
 git clone git://github.com/denkitronik/CCS811
 
 
 3. Enter to the libccs811 directory and check you have the last version:
 
 cd ~/CCS811
+
 git pull origin
 
 
@@ -108,6 +115,7 @@ See the following image:
 For more information visit: [pinout.xyz](https://pinout.xyz/pinout/i2c#)
 
 ## Example
+(I will upload it in the next days)
 
 ## Built With
 
