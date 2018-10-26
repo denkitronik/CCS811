@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f1" displayName="examples" projectFiles="true">
+      <itemPath>examples/example.c</itemPath>
+    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
@@ -67,8 +70,22 @@
                             perm="644"
                             owner="root"
                             group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="644"
+                            owner="root"
+                            group="bin"/>
         </packFileList>
       </packaging>
+      <item path="examples/example.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="libccs811.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="libccs811.h" ex="false" tool="3" flavor2="0">
@@ -94,6 +111,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="examples/example.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="libccs811.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="libccs811.h" ex="false" tool="3" flavor2="0">
