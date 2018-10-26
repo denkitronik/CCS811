@@ -115,7 +115,15 @@ See the following image:
 For more information visit: [pinout.xyz](https://pinout.xyz/pinout/i2c#)
 
 ## Example
-(I will upload it in the next days)
+An example is included in the examples folder.
+
+You can run it in this simple way:
+
+```
+cd examples
+gcc example.c -lccs811 -lwiringPi -o example
+./example
+```
 
 ## Built With
 
