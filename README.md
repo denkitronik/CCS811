@@ -10,7 +10,7 @@ This is an easy to use shared library for CO2 and TVOC sensor CCS811
 WiringPi library installed
 
 ### Installing the library
-##ENABLING I2C
+#### ENABLING I2C
 
 1. Start the Raspberry Pi config utility: 
 ```bash
@@ -22,7 +22,7 @@ sudo raspi-config
 5. Select "Finish"
 
 
-##INSTALL AND UPDATE WIRING PI
+#### INSTALL AND UPDATE WIRING PI
 
 Enter to the Raspberry PI shell (directly with a screen and a keyboard or using a SSH client in your PC) follow the next steps (see http://wiringpi.com/download-and-install/):
 
@@ -59,7 +59,7 @@ git pull origin
 ./build
 ```
 
-##INSTALL LIBCCS811
+#### INSTALL LIBCCS811
 
 1. Let's check if you have updated the software repository and install "git":
 ```bash
@@ -87,11 +87,11 @@ git pull origin
 ### Running the tests
 
 1. Connect the CCS811 in the 3.3v power supply pins of your Raspberry PI.
-2. Connect the CCS811 SCLK pin to the pin 5 of your Raspberry PI.
-3. Connect the CCS811 SDA pin to the pin 3 of your Raspberry PI.
-4. Connect the CCS811 ADDRESS pin in the 3.3v power supply pin of your Raspberry PI.
-5. Connect the CCS811 INT pin in the pin 13 (wiringPi 2) of your Raspberry PI.
-6. Connect the CCS811 RESET pin in the pin 15 (wiringPi 3) of your Raspberry PI.
+2. CCS811 SCLK pin to the pin 5 of your Raspberry PI.
+3. CCS811 SDA pin to the pin 3 of your Raspberry PI.
+4. CCS811 ADDRESS pin to the 3.3v power supply pin of your Raspberry PI.
+5. CCS811 INT pin ton the pin 13 (wiringPi 2) of your Raspberry PI.
+6. CCS811 RESET pin to the pin 15 (wiringPi 3) of your Raspberry PI.
 
 
 See the following image:
