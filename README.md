@@ -16,10 +16,10 @@ WiringPi library installed
 ```bash
 sudo raspi-config
 ```
-2. Select "Interfacing Options"
-3. Select "I2C"
-4. In the message: Would you like the ARM I2C interface to be enabled? Select "yes" and then select on "Ok"
-5. Select "Finish"
+2. Select `Interfacing Options`
+3. Select `I2C`
+4. In the message: `Would you like the ARM I2C interface to be enabled?` Select `yes` and then select on `Ok`
+5. Select `Finish`
 
 
 #### INSTALL AND UPDATE WIRING PI
@@ -36,13 +36,13 @@ sudo apt-get purge wiringpi
 hash -r
 ```
 
-3. Let's update to the last software repository and install "git":
+3. Let's update to the last software repository and install `git`:
 ```bash
 sudo apt-get update
 sudo apt-get install git-core
 ```
 
-4. Go to your home directory and get wiringPi:
+4. Go to your home directory and get `wiringPi`:
 ```bash
 cd
 git clone git://git.drogon.net/wiringPi
@@ -61,13 +61,13 @@ git pull origin
 
 #### INSTALL LIBCCS811
 
-1. Let's check if you have updated the software repository and install "git":
+1. Let's check if you have updated the software repository and install `git`:
 ```bash
 sudo apt-get update
 sudo apt-get install git-core
 ```
 
-2. Go to your home directory and get "libccs811":
+2. Go to your home directory and get `libccs811`:
 ```bash
 cd
 git clone git://github.com/denkitronik/CCS811
@@ -132,4 +132,4 @@ I am using [SemVer](http://semver.org/) for versioning.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the `MIT License` - see the [LICENSE](LICENSE.md) file for details.
