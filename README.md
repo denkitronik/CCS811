@@ -97,15 +97,10 @@ git pull origin
 ## Running the tests
 
 1. Connect the CCS811 in the 3.3v power supply pins of your Raspberry PI.
-
 2. Connect the CCS811 SCLK pin to the pin 5 of your Raspberry PI.
-
 3. Connect the CCS811 SDA pin to the pin 3 of your Raspberry PI.
-
 4. Connect the CCS811 ADDRESS pin in the 3.3v power supply pin of your Raspberry PI.
-
 5. Connect the CCS811 INT pin in the pin 13 (wiringPi 2) of your Raspberry PI.
-
 6. Connect the CCS811 RESET pin in the pin 15 (wiringPi 3) of your Raspberry PI.
 
 
