@@ -29,42 +29,37 @@ INSTALL AND UPDATE WIRING PI
 Enter to the Raspberry PI shell (directly with a screen and a keyboard or using a SSH client in your PC) follow the next steps (see http://wiringpi.com/download-and-install/):
 
 1. Check you have a updated version of wiringPi that works with your Raspberry PI model:
-
+```bash
 gpio -v
-
-
+```
 2. If you need or want to get the last version of wiringPi uninstall the current version of wiringPi:
-
+```bash
 sudo apt-get purge wiringpi
-
 hash -r
-
+```
 
 3. Let's update to the last software repository and install "git":
-
+```bash
 sudo apt-get update
-
 sudo apt-get install git-core
-
+```
 
 4. Go to your home directory and get wiringPi:
-
+```bash
 cd
-
 git clone git://git.drogon.net/wiringPi
-
+```
 
 5. Enter to the wiringPi directory and check you have the last version:
-
+```bash
 cd ~/wiringPi
-
 git pull origin
-
+```
 
 6. Build and install the library, just typing the following: 
-
+```bash
 ./build
-
+```
 
 INSTALL LIBCCS811
 
