@@ -64,30 +64,27 @@ git pull origin
 INSTALL LIBCCS811
 
 1. Let's check if you have updated the software repository and install "git":
-
+```bash
 sudo apt-get update
-
 sudo apt-get install git-core
-
+```
 
 2. Go to your home directory and get "libccs811":
-
+```bash
 cd
-
 git clone git://github.com/denkitronik/CCS811
-
+```
 
 3. Enter to the libccs811 directory and check you have the last version:
-
+```bash
 cd ~/CCS811
-
 git pull origin
-
+```
 
 4. Build and install the library, just typing the following: 
-
+```bash
 ./make
-
+```
 
 ## Running the tests
 
@@ -105,7 +102,7 @@ See the following image:
 For more information visit: [pinout.xyz](https://pinout.xyz/pinout/i2c#)
 
 ## Example
-An example is included in the examples folder.
+An [example](https://github.com/denkitronik/CCS811/blob/master/examples/example.c) is included in the [examples](https://github.com/denkitronik/CCS811/tree/master/examples) folder.
 
 You can run it in this simple way:
 
