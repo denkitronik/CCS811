@@ -119,7 +119,7 @@ An example is included in the examples folder.
 
 You can run it in this simple way:
 
-```
+```bash
 cd examples
 gcc example.c -lccs811 -lwiringPi -o example
 ./example
