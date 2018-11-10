@@ -79,9 +79,14 @@ cd ~/CCS811
 git pull origin
 ```
 
-4. Build and install the library, just typing the following: 
+4. Install the glib library: 
 ```bash
-./make
+sudo apt get install libglib2.0
+```
+
+5. Build and install the library, just typing the following: 
+```bash
+make
 ```
 
 ### Running the tests
