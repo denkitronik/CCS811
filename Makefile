@@ -65,7 +65,7 @@ install_header:
 install_libcss811: 
 	@sudo cp $(CND_ARTIFACT_DIR_${CONF})/$(CND_ARTIFACT_NAME_${CONF}) /usr/local/lib
 	@sudo ldconfig
-	@echo "Library libccs811.so was installed succesfully (c) 2018 Alvaro Salazar"
+	@echo "Library libccs811.so was installed succesfully (c) 2019 Alvaro Salazar"
 # clean
 clean: .clean-post
 
