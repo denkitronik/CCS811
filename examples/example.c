@@ -31,7 +31,7 @@
  */
 
 /* 
- * File:   main.c
+ * File:   example.c
  * Author: Alvaro Salazar <alvaro@denkitronik.com>
  *
  * Created on 13 de octubre de 2018, 04:20 PM
